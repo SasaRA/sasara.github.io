@@ -536,7 +536,6 @@ function once(fn, context) {
             result = fn.apply(context || this, arguments);
             fn = null;
         }
-
         return result;
     };
 }
@@ -638,8 +637,7 @@ var GSAP = {
             TweenMax.to(v, t, {yPercent: -50});
             TweenMax.to(v, t, {top: "50%"});
         }
-    }
-    ;
+    };
 
 window.addEventListener('load', init);
 
