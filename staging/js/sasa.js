@@ -141,7 +141,7 @@ function loadContent() {
 
     loadHeader();
     loadFooter();
-    setMainStage();
+    // setMainStage();
     loadMainStageContent();
 }
 
