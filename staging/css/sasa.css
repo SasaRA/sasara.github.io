@@ -777,10 +777,10 @@ START lightbox.css
 ===============================================*/
 
 /* Preload images */
-body:after {
-	content: url(../img/close.png) url(../img/loading.gif) url(../img/prev.png) url(../img/next.png);
-	display: none;
-}
+/*body:after {*/
+	/*content: url(../img/close.png) url(../img/loading.gif) url(../img/prev.png) url(../img/next.png);*/
+	/*display: none;*/
+/*}*/
 
 .lightboxOverlay {
 	position: absolute;
