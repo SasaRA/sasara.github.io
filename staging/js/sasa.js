@@ -2,6 +2,18 @@ var $debug = true;
 
 TweenLite.defaultEase = Expo.easeOut;
 
+var $sasaMessageList = [
+    'LOVE REIGNS SUPREME',
+    // 'EVERY DAY IS A BLESSING',
+    'LOVE GOD & LIVE',
+    'SHINE BRIGHT',
+    'HEARTCORE 4 LIFE',
+    // 'LISTEN TO LIFE',
+    'UNITY = STRENGTH',
+    'KEEP SMILING',
+    'YOU ARE LOVED'
+];
+
 var $scPlayer = document.getElementById('scPlayer')
 var $scSwiper = document.getElementById('scSwiper');
 var $scSwiperWrapper = document.getElementById('scSwiperWrapper');
@@ -224,8 +236,18 @@ function loadSocialLogos() {
 
 function loadSasaMessage() {
     trace('loadSasaMessage INIT');
+
+    msgNumber = Math.floor(Math.random() * $sasaMessageList.length); // Random Index position in the array
+    // GSAP.insertHTML($sasaMsg, $sasaMessageList[msgNumber]);
+    insertHTML($sasaMessage, $sasaMessageList[msgNumber]);
+    showSasaMessage();
+}
+
+function showSasaMessage() {
+    trace('showSasaMessage INIT');
     $sasaMessage.classList.remove('hidden');
 }
+
 
 function scLoadPlaylist(playlist) {
     trace('scLoadPlaylist INIT');
