@@ -142,7 +142,7 @@ function loadContent() {
     loadHeader();
     loadFooter();
     // setMainStage();
-    loadMainStageContent();
+    // loadMainStageContent();
 }
 
 function loadHeader() {
