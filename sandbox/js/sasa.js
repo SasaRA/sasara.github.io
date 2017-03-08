@@ -230,6 +230,7 @@ function loadSasaMsgTL() {
         .to($nimaiOverlay, 1, {zIndex: 1, opacity: 0, onComplete: function() {
             TweenMax.set($sasaMessage, {clearProps: "all"});
             $nimaiOverlay.classList.add('hidden');
+            $sasaMessage.classList.add('hidden');
         }}, '-=1.2')
     ;
 
