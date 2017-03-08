@@ -169,7 +169,7 @@ function init() {
 function start() {
     trace('start');
     preloadTwitterFetcher($tfConfig);
-    buildMainTL(1);
+    buildMainTL(0.5);
     loadListeners();
 }
 
@@ -182,8 +182,9 @@ function buildMainTL(d) {
         .delay(d)
         .add(loadSasaMsgTL(), 'sasaMsg')
         .add(loadHeadFootTL(), 'headFoot')
-        .add(loadSocialTL(1), 'social')
-        .add(loadTwitterTL(1), 'twitter')
+        .add(loadSocialTL(0.5), 'social')
+        .add(loadTwitterTL(0.5), 'twitter')
+        .call(mainStagerize,[],this,'+=2')
     ;
 
     if ($playIntro === true) {
