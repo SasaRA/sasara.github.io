@@ -169,6 +169,7 @@ function init() {
 function start() {
     trace('start');
     // setDocSize();
+    preloadTwitterFetcher($tfConfig);
     buildMainTL(1);
     // loadContent();
     // loadListeners();
@@ -185,12 +186,14 @@ function buildMainTL(d) {
             .add(loadSasaMsgTL(), 'sasaMsg')
             .add(loadHeadFootTL(), 'headFoot')
             .add(loadSocialTL(1), 'social')
+            .add(loadTwitterTL(1), 'twitter')
         ;
     } else {
         $mainTL
             .delay(d)
             .add(loadHeadFootTL(), 'headFoot')
             .add(loadSocialTL(1), 'social')
+            .add(loadTwitterTL(1), 'twitter')
         ;
     }
 
@@ -296,6 +299,22 @@ function loadSocialTL(d) {
 
 }
 
+function loadTwitterTL(d) {
+    trace('loadTwitterTL INIT');
+
+    tl = new TimelineLite();
+
+    tl
+        .delay(d)
+        .set($twitterFeed, {className: '-=hidden'})
+        .set($twitterFeed,{height:'auto'})
+        .from($twitterFeed,0.3,{height:0, opacity:0, scaleY:0.5})
+    ;
+
+    return tl;
+
+}
+
 function showAllGlories() {
 
     tl = new TimelineLite({paused:true});
@@ -383,20 +402,6 @@ function preloadTwitterFetcher(config) {
     twitterFetcher.fetch(config);
 }
 
-function loadTwitterFetcher() {
-    trace('loadTwitterFetcher INIT');
-
-    $twitterFeed.classList.remove('hidden');
-
-    tl = new TimelineLite({paused:true});
-    tl
-        .set($twitterFeed,{height:'auto'})
-        .from($twitterFeed,0.3,{height:0, opacity:0, scaleY:0.5})
-    ;
-    tl.play();
-
-    // loadMainStageContent();
-}
 
 function loadStorePromo() {
     trace('loadStorePromo INIT');
@@ -758,5 +763,21 @@ function loadSocialLogos() {
     ;
 
 }
+
+function loadTwitterFetcher() {
+    trace('loadTwitterFetcher INIT');
+
+    $twitterFeed.classList.remove('hidden');
+
+    tl = new TimelineLite({paused:true});
+    tl
+        .set($twitterFeed,{height:'auto'})
+        .from($twitterFeed,0.3,{height:0, opacity:0, scaleY:0.5})
+    ;
+    tl.play();
+
+    // loadMainStageContent();
+}
+
 
 
