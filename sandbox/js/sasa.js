@@ -5,7 +5,7 @@
 
 var $debug = true,
     $firstTime = true;
-    $playIntro = false;
+    $playIntro = true;
 
 var $defaultEase = "Expo.easeOut";
 
@@ -23,9 +23,13 @@ var $sasaMessageList = [
 
 var $jsLinks = [
     'js/TweenMax.min.js'
-    // ,'js/scrollreveal.min.js'
     ,'js/twitterFetcher_min.js'
+    // ,'js/scrollreveal.min.js'
 ];
+
+var $mainTL;
+
+
 
 var $scPlayer = document.getElementById('scPlayer'),
     $scSwiper = document.getElementById('scSwiper'),
@@ -157,15 +161,41 @@ function trace(value) {
 
 function init() {
     trace('init');
+    loadSasaMessage();
+    loadSocial($socialList);
     loadJS($jsLinks);
 }
 
 function start() {
     trace('start');
     // setDocSize();
+    buildMainTL(1);
+    // loadContent();
+    // loadListeners();
+}
+
+function buildMainTL(d) {
     TweenLite.defaultEase = Sine.easeOut;
-    loadContent();
-    loadListeners();
+
+    $mainTL = new TimelineLite({paused:true});
+
+    if ($playIntro === true) {
+        $mainTL
+            .delay(d)
+            .add(loadSasaMsgTL(), 'sasaMsg')
+            .add(loadHeadFootTL(), 'headFoot')
+            .add(loadSocialTL(1), 'social')
+        ;
+    } else {
+        $mainTL
+            .delay(d)
+            .add(loadHeadFootTL(), 'headFoot')
+            .add(loadSocialTL(1), 'social')
+        ;
+    }
+
+    $mainTL.play();
+
 }
 
 function loadContent() {
@@ -191,96 +221,78 @@ function loadContent() {
 
 function loadListeners() {
     // $sasaLogo.addEventListener("mouseover", socialize);
-    $sasaLogo.addEventListener("click", twitterize);
+    // $sasaLogo.addEventListener("click", twitterize);
     // $heartcoreLogo.addEventListener("mouseover", twitterize);
-    $heartcoreLogo.addEventListener("click", mainStagerize);
+    // $heartcoreLogo.addEventListener("click", mainStagerize);
 }
 
-function loadSasaMessage() {
-    trace('loadSasaMessage INIT');
+function loadSasaMsgTL() {
+    trace('loadSasaMsgTL INIT');
 
-    msgNumber = Math.floor(Math.random() * $sasaMessageList.length); // Random Index position in the array
-    GSAP.insertHTML($sasaMsg, $sasaMessageList[msgNumber]);
-    GSAP.insertHTML($sasaMessage, $sasaMessageList[msgNumber]);
-    playSasaMessage(1);
-}
-
-function playSasaMessage(msgDuration) {
-    trace('playSasaMessage INIT');
-
-    $sasaMessage.classList.add('animate');
-    $nimaiOverlay.classList.remove('hidden');
-    $sasaMessage.classList.remove('hidden');
-
-    duration = ('+="' + msgDuration + '"');
-
-    tl = new TimelineLite({paused:true});
+    tl = new TimelineLite();
 
     tl
-        // .to($nimaiOverlay, 0.01, {zIndex: 5000, opacity: 1})
+        .set($sasaMessage, {className: '+=animate'})
+        .set($nimaiOverlay, {className: '-=hidden'})
+        .set($sasaMessage, {className: '-=hidden'})
         .to($sasaMessage, 0.01, {zIndex: 5100})
         .to($sasaMessage, 0.01, {xPercent: -50, yPercent: -50})
         .to($sasaMessage, 0.01, {left: "50%", top: "50%"})
         .to($sasaMessage, 0.5, {opacity: 1, scale: 1.5})
-        .to($nimaiOverlay, 3, {zIndex: 1, opacity: 1})
-        .to($sasaMessage, 1.2, {opacity: 0, scale: 0.6}, '-=2')
-        .to($sasaMessage, 4, {top: '30%'}, '-=2')
-        // .to($nimaiOverlay, 1, {zIndex: 1, opacity: 0})
-        .call(endSasaMessage,[],this,'-=3.2')
+        // .to($nimaiOverlay, 3, {zIndex: 1, opacity: 1})
+        .to($sasaMessage, 1.2, {opacity: 0, scale: 0.6}, '+=2')
+        .to($sasaMessage, 2, {top: '30%'}, '-=1.2')
+        .to($nimaiOverlay, 1, {zIndex: 1, opacity: 0, onComplete: function() {
+            TweenMax.set($sasaMessage, {clearProps: "all"});
+            $nimaiOverlay.classList.add('hidden');
+        }}, '-=1.2')
     ;
 
-    tl.play();
-    // tl.kill(null,$sasaMessage);
+    return tl;
 }
 
-function endSasaMessage() {
-    trace('endSasaMessage INIT');
-
-
-    TweenMax.to($nimaiOverlay, 1, {zIndex: 1, opacity: 0, onComplete: function() {
-        loadHeadFoot();
-        TweenMax.set($sasaMessage, {clearProps: "all"});
-        $nimaiOverlay.classList.add('hidden');
-    }});
-    // TweenMax.set($sasaMessage, {display: "none"});
-
-    // $sasaMessage.classList.add('hidden');
-    // $sasaMessage.classList.remove('animate');
-
-    // loadContent();
-}
-
-function loadHeadFoot() {
-    trace('loadHeadFoot INIT');
+function loadHeadFootTL() {
+    trace('loadHeadFootTL INIT');
 
     time = 0.3;
 
-    TweenMax.set($sasaLogo,{opacity:0});
-    TweenMax.set($heartcoreLogo,{opacity:0});
+    tl = new TimelineLite();
 
-    tl = new TimelineLite({paused:true});
     tl
-        .add('start',0)
-        .add('step2',0.05)
-        .to($sasaLogo, time, {opacity: 1}, 'start')
-        .to($heartcoreLogo, time, {opacity: 1}, 'start')
-        .from($sasaLogo, time, {scale:0.3,y:-150},'step2')
-        .from($heartcoreLogo, time, {scale:0.3,y:150},'step2')
-        .call(socialize,[],this,'+=0.5')
-        // .call(showAllGlories,[],this,'+=0.4')
-        // .call(showNimaiCredits,[],this,'+=0.4')
-        // .call(twitterize)
-        // .from($AllGlories,0.5,{y:5,opacity:0},'+=0.25')
-        // .staggerFrom($nimaiFooterCredit,0.5,{y:-5,opacity: 0},0.2,'-=0.5')
+        .set($nimaiHeader, {className: '-=hidden'})
+        .set($nimaiFooter, {className: '-=hidden'})
+        .set($sasaLogo, {className: '-=hidden'})
+        .set($heartcoreLogo, {className: '-=hidden'})
+        .set($sasaLogo,{opacity:0})
+        .set($heartcoreLogo,{opacity:0})
+        .add('hf_0',0)
+        .add('hf_1',0.05)
+        .to($sasaLogo, time, {opacity: 1}, 'hf_0')
+        .to($heartcoreLogo, time, {opacity: 1}, 'hf_0')
+        .from($sasaLogo, time, {scale:0.3,y:-150},'hf_1')
+        .from($heartcoreLogo, time, {scale:0.3,y:150},'hf_1')
+        ;
+
+    return tl;
+
+}
+
+function loadSocialTL(d) {
+    trace('loadSocialTL INIT');
+
+    tl = new TimelineLite();
+
+    tl
+        .delay(d)
+        .set($socialLogos, {className: '-=hidden'})
+        .set($link, {opacity: 1})
+        .set($socialLogos,{height:'auto'})
+        .from($socialLogos,0.3,{height:0})
+        .staggerFrom($link, 0.2, {y: +10, opacity: 0}, 0.035)
+        .staggerTo($link,0.2,{scale:0.85}, -0.035)
     ;
 
-    tl.play();
-
-    $nimaiHeader.classList.remove('hidden');
-    $nimaiFooter.classList.remove('hidden');
-    $sasaLogo.classList.remove('hidden');
-    $heartcoreLogo.classList.remove('hidden');
-    // preloadTwitterFetcher($tfConfig);
+    return tl;
 
 }
 
@@ -353,28 +365,8 @@ function loadSocial(s) {
         addEventListener.call(aTags[i],'mouseover',socialLinkOver);
         addEventListener.call(aTags[i],'mouseout',socialLinkOut);
     }
-    loadSocialLogos();
+    // loadSocialLogos();
 }
-
-function loadSocialLogos() {
-    trace('loadSocialLogos INIT');
-    
-    // loadLinkListeners($socialList);
-
-    $socialLogos.classList.remove('hidden');
-
-    tl = new TimelineLite();
-    tl
-        .set($link, {opacity: 1})
-        .set($socialLogos,{height:'auto'})
-        .from($socialLogos,0.3,{height:0})
-        .staggerFrom($link, 0.2, {y: +10, opacity: 0}, 0.035)
-        .staggerTo($link,0.2,{scale:0.85}, -0.035)
-        .call(twitterize,[],this,'+=0.7')
-    ;
-
-}
-
 
 function socialLinkOver(l) {
     // trace('mouseover');
@@ -656,4 +648,115 @@ function loadLinkListeners(s) {
         addEventListener.call(aTags[i],'mouseout',socialLinkOut);
     }
 }
+
+function loadSasaMessage() {
+    trace('loadSasaMessage INIT');
+
+    msgNumber = Math.floor(Math.random() * $sasaMessageList.length); // Random Index position in the array
+    GSAP.insertHTML($sasaMsg, $sasaMessageList[msgNumber]);
+    GSAP.insertHTML($sasaMessage, $sasaMessageList[msgNumber]);
+    // playSasaMessage(1);
+}
+
+
+function playSasaMessage(msgDuration) {
+    trace('playSasaMessage INIT');
+
+    $sasaMessage.classList.add('animate');
+    $nimaiOverlay.classList.remove('hidden');
+    $sasaMessage.classList.remove('hidden');
+
+    // duration = ('+="' + msgDuration + '"');
+
+    tl = new TimelineLite({paused:true});
+
+    tl
+    // .to($nimaiOverlay, 0.01, {zIndex: 5000, opacity: 1})
+        .to($sasaMessage, 0.01, {zIndex: 5100})
+        .to($sasaMessage, 0.01, {xPercent: -50, yPercent: -50})
+        .to($sasaMessage, 0.01, {left: "50%", top: "50%"})
+        .to($sasaMessage, 0.5, {opacity: 1, scale: 1.5})
+        .to($nimaiOverlay, 3, {zIndex: 1, opacity: 1})
+        .to($sasaMessage, 1.2, {opacity: 0, scale: 0.6}, '-=2')
+        .to($sasaMessage, 4, {top: '30%'}, '-=2')
+        // .to($nimaiOverlay, 1, {zIndex: 1, opacity: 0})
+        .call(endSasaMessage,[],this,'-=3.2')
+    ;
+
+    tl.play();
+    // tl.kill(null,$sasaMessage);
+}
+
+function endSasaMessage() {
+    trace('endSasaMessage INIT');
+
+
+    TweenMax.to($nimaiOverlay, 1, {zIndex: 1, opacity: 0, onComplete: function() {
+        loadHeadFoot();
+        TweenMax.set($sasaMessage, {clearProps: "all"});
+        $nimaiOverlay.classList.add('hidden');
+    }});
+    // TweenMax.set($sasaMessage, {display: "none"});
+
+    // $sasaMessage.classList.add('hidden');
+    // $sasaMessage.classList.remove('animate');
+
+    // loadContent();
+}
+
+function loadHeadFoot() {
+    trace('loadHeadFoot INIT');
+
+    time = 0.3;
+
+    TweenMax.set($sasaLogo,{opacity:0});
+    TweenMax.set($heartcoreLogo,{opacity:0});
+
+    tl = new TimelineLite({paused:true});
+    tl
+        .add('start',0)
+        .add('step2',0.05)
+        .to($sasaLogo, time, {opacity: 1}, 'start')
+        .to($heartcoreLogo, time, {opacity: 1}, 'start')
+        .from($sasaLogo, time, {scale:0.3,y:-150},'step2')
+        .from($heartcoreLogo, time, {scale:0.3,y:150},'step2')
+        .call(socialize,[],this,'+=0.5')
+    // .call(showAllGlories,[],this,'+=0.4')
+    // .call(showNimaiCredits,[],this,'+=0.4')
+    // .call(twitterize)
+    // .from($AllGlories,0.5,{y:5,opacity:0},'+=0.25')
+    // .staggerFrom($nimaiFooterCredit,0.5,{y:-5,opacity: 0},0.2,'-=0.5')
+    ;
+
+    tl.play();
+
+    $nimaiHeader.classList.remove('hidden');
+    $nimaiFooter.classList.remove('hidden');
+    $sasaLogo.classList.remove('hidden');
+    $heartcoreLogo.classList.remove('hidden');
+    // preloadTwitterFetcher($tfConfig);
+
+}
+
+
+
+function loadSocialLogos() {
+    trace('loadSocialLogos INIT');
+
+    // loadLinkListeners($socialList);
+
+    $socialLogos.classList.remove('hidden');
+
+    tl = new TimelineLite();
+    tl
+        .set($link, {opacity: 1})
+        .set($socialLogos,{height:'auto'})
+        .from($socialLogos,0.3,{height:0})
+        .staggerFrom($link, 0.2, {y: +10, opacity: 0}, 0.035)
+        .staggerTo($link,0.2,{scale:0.85}, -0.035)
+        .call(twitterize,[],this,'+=0.7')
+    ;
+
+}
+
 
