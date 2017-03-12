@@ -211,6 +211,9 @@ function loadHeadFootTL() {
     tl = new TimelineLite();
 
     tl
+        .set($nimaiOverlay, {className: '+=hidden'})
+        .set($sasaMessage, {className: '+=hidden'})
+        .set($sasaMessage, {className: '-=animate'})
         .set($nimaiHeader, {className: '-=hidden'})
         .set($nimaiFooter, {className: '-=hidden'})
         .set($sasaLogo, {className: '-=hidden'})
