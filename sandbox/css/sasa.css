@@ -292,11 +292,10 @@ h4 {
 .sasaLogo {
 	height: 122px;
 	width: 200px;
-	/*position: absolute;*/
 	padding: 5px;
 	background-image: url(../images/SasaRA_Logo_200x122.png);
 	background-repeat: no-repeat;
-	background-position: 0px center;
+	background-position: center center;
 	margin-left: auto;
 	margin-right: auto;
 }
@@ -317,17 +316,17 @@ h4 {
 }
 
 @media screen and (min-width: 200px) and (max-width: 399px) {
-	/*.sasaLogo {*/
-		/*height: 20px;*/
-		/*!*width: 200px;*!*/
-		/*padding: 5px;*/
-		/*background-image: url(../images/Sasa_200x20.png);*/
-		/*background-repeat: no-repeat;*/
-		/*background-position: center;*/
-		/*margin-left: auto;*/
-		/*margin-right: auto;*/
+	.sasaLogo {
+		height: 20px;
+		/*width: 200px;*/
+		padding: 5px;
+		background-image: url(../images/Sasa_200x20.png);
+		background-repeat: no-repeat;
+		background-position: center;
+		margin-left: auto;
+		margin-right: auto;
 
-	/*}*/
+	}
 	#sasaMessage {
 		font-size: 8vmin;
 	}
@@ -400,8 +399,14 @@ h4 {
 
 
 #heartcoreLogo {
-	/*margin: 10px;*/
-	/*padding: 5px;*/
+	height: 88px;
+	width: 160px;
+	padding: 5px;
+	background-image: url(../images/HeartCore_Media_160x88.png);
+	background-repeat: no-repeat;
+	background-position: center center;
+	margin-left: auto;
+	margin-right: auto;
 }
 
 .revMailingList {
@@ -538,7 +543,7 @@ h4 {
 		border-radius: 10px; /* future proofing */
 		-khtml-border-radius: 10px; /* for old Konqueror browsers */
 		line-height: 1.3em;
-		padding: 0 5px 5px;
+		padding: 0 5px 0px;
 		margin-left: auto;
 		margin-right: auto;
 		width: 80%;
@@ -549,9 +554,11 @@ h4 {
 	}
 
 	.twitterBG {
-	font-size: 6vmin;
-	opacity: 0.15;
-	z-index: 10;
+		font-size: 6vmin;
+		opacity: 0.15;
+		z-index: 10;
+		margin-top: -5px;
+		margin-bottom: -3px;
 	}
 }
 
@@ -564,7 +571,7 @@ h4 {
 		border-radius: 10px; /* future proofing */
 		-khtml-border-radius: 10px; /* for old Konqueror browsers */
 		line-height: 1.3em;
-		padding: 0 5px 5px;
+		padding: 0 5px 0px;
 		margin-left: auto;
 		margin-right: auto;
 		width: 70%;
@@ -573,6 +580,8 @@ h4 {
 		font-size: 4vmin;
 		opacity: 0.15;
 		z-index: 10;
+		margin-top: -5px;
+		margin-bottom: -3px;
 	}
 }
 
@@ -584,16 +593,17 @@ h4 {
 		border-radius: 10px; /* future proofing */
 		-khtml-border-radius: 10px; /* for old Konqueror browsers */
 		line-height: 1.3em;
-		padding: 0 5px 7px;
+		padding: 0 5px 0px;
 		width:60%;
 		margin-left: auto;
 		margin-right: auto;
 	}
 	.twitterBG {
-		font-size: 3.0vmin;
+		font-size: 4.5vmin;
 		opacity: 0.15;
 		z-index: 10;
-
+		margin-top: -5px;
+		margin-bottom: -3px;
 	}
 }
 

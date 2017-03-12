@@ -5,7 +5,7 @@
 
 var $debug = true,
     $firstTime = true;
-    $playIntro = true;
+    $playIntro = false;
 
 var $defaultEase = "Expo.easeOut";
 
@@ -28,19 +28,6 @@ var $jsLinks = [
 ];
 
 var $mainTL;
-
-
-
-var $scPlayer = document.getElementById('scPlayer'),
-    $scSwiper = document.getElementById('scSwiper'),
-    $scSwiperWrapper = document.getElementById('scSwiperWrapper');
-
-var $scTrackA = document.getElementById('scTrackA'),
-    $scTrackB = document.getElementById('scTrackB'),
-    $scExciteMoneyIframe = '<iframe width="100%" height="166" scrolling="no" frameborder="no" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/76063308&amp;color=0066cc&amp;auto_play=false&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false"></iframe>',
-    $scWeBelieveIframe = '<iframe width="100%" height="166" scrolling="no" frameborder="no" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/76020624&amp;color=0066cc&amp;auto_play=false&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false"></iframe>';
-
-var $swiperContainer = document.getElementsByClassName('swiperContainer');
 
 var $mainStage = document.getElementById('mainStage'),
     $mainContainer = document.getElementById('mainContainer'),
@@ -67,14 +54,14 @@ var $nimaiOverlay = document.getElementById('nimaiOverlay'),
 var $socialList = [
     'soundcloud'
     ,'patreon'
-    // ,'reverbnation'
-    ,'youtube'
     ,'twitter'
+    ,'reverbnation'
+    ,'youtube'
     ,'instagram'
     // ,'tumblr'
     ,'facebook'
     // ,'pinterest'
-    ,'plus'
+    // ,'plus'
     ,'medium'
     ,'linkedin'
     ,'github'
@@ -110,24 +97,6 @@ var $docHeight,
     $docWidth,
     $docCenterH,
     $docCenterW;
-
-var $instaSlides = 4;
-
-var resizeTimer;
-
-var mySwiper;
-
-var $sc_ID = 1796918, //SASA HASID RA SOUNDCLOUD USER ID #
-    $sc_NightPlaylist = '<iframe id="scPlaylist" width="100%" height="500" scrolling="no" frameborder="no" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/3416309&amp;color=ff5500&amp;auto_play=false&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false"></iframe>';
-
-var $sc_BabyBoy = 165546030,
-    $sc_OneThing = 125842224,
-    $sc_EveryBodyDies = 83457472,
-    $sc_AngelChild = 77178318,
-    $sc_ExciteMoney = 76063308,
-    $sc_WeBelieve = 76020624,
-    $sc_Nightmerikkkana = 76012806,
-    $sc_FEAR = 75987437;
 
 var $tfConfig = {
     "id": '464304692680335360',
@@ -169,22 +138,23 @@ function init() {
 function start() {
     trace('start');
     preloadTwitterFetcher($tfConfig);
-    buildMainTL(0.5);
+    buildMainTL(0.5,2);
     loadListeners();
 }
 
-function buildMainTL(d) {
+function buildMainTL(d,t) {
     TweenLite.defaultEase = Sine.easeOut;
 
     $mainTL = new TimelineLite({paused:true});
 
     $mainTL
+        .timeScale(t)
         .delay(d)
         .add(loadSasaMsgTL(), 'sasaMsg')
         .add(loadHeadFootTL(), 'headFoot')
-        .add(loadSocialTL(0.5), 'social')
-        .add(loadTwitterTL(0.5), 'twitter')
-        .call(mainStagerize,[],this,'+=2')
+        .add(loadSocialTL(0.7), 'social')
+        .add(loadTwitterTL(0.3), 'twitter')
+        // .call(mainStagerize,[],this,'+=2')
     ;
 
     if ($playIntro === true) {
@@ -272,6 +242,7 @@ function loadSocialTL(d) {
         .delay(d)
         .set($socialLogos, {className: '-=hidden'})
         .set($link, {opacity: 1})
+        .set($socialLogos,{height:0})
         .set($socialLogos,{height:'auto'})
         .from($socialLogos,0.3,{height:0})
         .staggerFrom($link, 0.2, {y: +10, opacity: 0}, 0.035)
@@ -292,6 +263,8 @@ function loadTwitterTL(d) {
         .set($twitterFeed, {className: '-=hidden'})
         .set($twitterFeed,{height:'auto'})
         .from($twitterFeed,0.3,{height:0, opacity:0, scaleY:0.5})
+        .to($twitterFeed,0.2,{scale:1.1})
+        .to($twitterFeed,0.5,{scale:1.0})
     ;
 
     return tl;
@@ -414,36 +387,6 @@ function loadMainStageContent() {
     scLoadPlaylist($sc_NightPlaylist);
 
     // loadStorePromo();
-}
-
-function scLoadPlaylist(playlist) {
-    trace('scLoadPlaylist INIT');
-    $scPlayer.classList.remove('hidden');
-    TweenMax.set($scPlayer,{height:0,opacity:0});
-    GSAP.insertHTML($scPlayer, playlist);
-
-    tl = new TimelineLite({paused:true});
-    tl
-        .to($scPlayer,0.2,{height:163})
-        .to($scPlayer,0.5,{opacity:1})
-    ;
-    tl.play();
-    $scPlayer.addEventListener("mouseover", scPlaylistOpen);
-}
-
-function scPlaylistOpen() {
-    // if ($firstTime = true) {
-    //     trace('scPlaylistOpen INIT');
-    //     TweenMax.to($scPlayer, 1, {height: 500});
-    //     $firstTime = false;
-    //     trace('$firstTime = ' + $firstTime);
-    // }
-    TweenMax.to($scPlayer, 1, {height: 500});
-}
-
-function scPlaylistClose() {
-    trace('scPlaylistClose INIT');
-    TweenMax.to(scPlaylist, 1, {height: 163});
 }
 
 function setMainStage() {
@@ -622,9 +565,74 @@ var GSAP = {
 window.addEventListener('load', init);
 
 
+
+// ========================================
+//     ARCHIVED VARIABLES
+// ========================================
+
+// var $instaSlides = 4;
+//
+// var resizeTimer;
+//
+// var mySwiper;
+//
+// var $scPlayer = document.getElementById('scPlayer'),
+//     $scSwiper = document.getElementById('scSwiper'),
+//     $scSwiperWrapper = document.getElementById('scSwiperWrapper');
+//
+// var $scTrackA = document.getElementById('scTrackA'),
+//     $scTrackB = document.getElementById('scTrackB'),
+//     $scExciteMoneyIframe = '<iframe width="100%" height="166" scrolling="no" frameborder="no" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/76063308&amp;color=0066cc&amp;auto_play=false&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false"></iframe>',
+//     $scWeBelieveIframe = '<iframe width="100%" height="166" scrolling="no" frameborder="no" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/76020624&amp;color=0066cc&amp;auto_play=false&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false"></iframe>';
+//
+// var $swiperContainer = document.getElementsByClassName('swiperContainer');
+//
+// var $sc_ID = 1796918, //SASA HASID RA SOUNDCLOUD USER ID #
+//     $sc_NightPlaylist = '<iframe id="scPlaylist" width="100%" height="500" scrolling="no" frameborder="no" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/3416309&amp;color=ff5500&amp;auto_play=false&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false"></iframe>';
+//
+// var $sc_BabyBoy = 165546030,
+//     $sc_OneThing = 125842224,
+//     $sc_EveryBodyDies = 83457472,
+//     $sc_AngelChild = 77178318,
+//     $sc_ExciteMoney = 76063308,
+//     $sc_WeBelieve = 76020624,
+//     $sc_Nightmerikkkana = 76012806,
+//     $sc_FEAR = 75987437;
+
 // ========================================
 //     ARCHIVED FUNCTIONS
 // ========================================
+
+
+// function scLoadPlaylist(playlist) {
+//     trace('scLoadPlaylist INIT');
+//     $scPlayer.classList.remove('hidden');
+//     TweenMax.set($scPlayer,{height:0,opacity:0});
+//     GSAP.insertHTML($scPlayer, playlist);
+//
+//     tl = new TimelineLite({paused:true});
+//     tl
+//         .to($scPlayer,0.2,{height:163})
+//         .to($scPlayer,0.5,{opacity:1})
+//     ;
+//     tl.play();
+//     $scPlayer.addEventListener("mouseover", scPlaylistOpen);
+// }
+//
+// function scPlaylistOpen() {
+//     // if ($firstTime = true) {
+//     //     trace('scPlaylistOpen INIT');
+//     //     TweenMax.to($scPlayer, 1, {height: 500});
+//     //     $firstTime = false;
+//     //     trace('$firstTime = ' + $firstTime);
+//     // }
+//     TweenMax.to($scPlayer, 1, {height: 500});
+// }
+//
+// function scPlaylistClose() {
+//     trace('scPlaylistClose INIT');
+//     TweenMax.to(scPlaylist, 1, {height: 163});
+// }
 
 // function loadLinkListeners(s) {
 //     trace('loadLinkListeners LOADED');
