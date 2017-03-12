@@ -112,14 +112,10 @@ var backstretchImages = [
     "images/bg/SasaRA_BG_Photo_3.png",
     "images/bg/SasaRA_BG_Photo_4.png"];
 
+
 /////////////////////////
 // GLOBAL VARIABLES END
 /////////////////////////
-
-window.onresize = function (event) {
-    clearTimeout(resizeTimer);
-    resizeTimer = setTimeout(setDocSize(), 200);
-};
 
 // trace for consistent console logging
 function trace(value) {
@@ -571,9 +567,7 @@ window.addEventListener('load', init);
 // ========================================
 
 // var $instaSlides = 4;
-//
-// var resizeTimer;
-//
+
 // var mySwiper;
 //
 // var $scPlayer = document.getElementById('scPlayer'),
@@ -602,6 +596,14 @@ window.addEventListener('load', init);
 // ========================================
 //     ARCHIVED FUNCTIONS
 // ========================================
+
+// var resizeTimer;
+//
+// window.onresize = function (event) {
+//     clearTimeout(resizeTimer);
+//     resizeTimer = setTimeout(setDocSize(), 200);
+// };
+
 
 
 // function scLoadPlaylist(playlist) {
