@@ -205,7 +205,7 @@ h4 {
 	width: 200px;
 	/*position: absolute;*/
 	padding: 5px;
-	background-image: url(../images/SasaRA_Logo_200x122.png);
+	background-image: url(../images/SasaRA_Logo.svg);
 	background-repeat: no-repeat;
 	background-position: 0px center;
 	margin-left: auto;
@@ -232,7 +232,7 @@ h4 {
 		height: 20px;
 		/*width: 200px;*/
 		padding: 5px;
-		background-image: url(../images/Sasa_200x20.png);
+		background-image: url(../images/SasaRA_Logo.svg);
 		background-repeat: no-repeat;
 		background-position: center;
 		margin-left: auto;
@@ -258,7 +258,7 @@ h4 {
 		height: 122px;
 		width: 200px;
 		/*position: absolute;*/
-		background-image: url(../images/SasaRA_Logo_200x122.png);
+		background-image: url(../images/SasaRA_Logo.svg);
 		background-repeat: no-repeat;
 		background-position: center;
 		margin-left: auto;
@@ -292,8 +292,17 @@ h4 {
 }
 
 
-.heartcoreLogo {
-	/*margin: 10px;*/
+#heartcoreLogo {
+	height: 88px;
+	width: 160px;
+	/*padding: 10px;*/
+	background-image: url(../images/HeartcoreMusic.svg);
+	/*background-image: url(../images/HeartCore_Media_160x88.png);*/
+	background-repeat: no-repeat;
+	background-position: center center;
+	margin-left: auto;
+	margin-right: auto;
+	margin-bottom: 5px;
 }
 
 .revMailingList {
@@ -330,6 +339,59 @@ h4 {
 }
 
 /*========= SOCIAL LOGOS ===========*/
+#socialLogos {
+	/*   background-color: rgba(0,0,0,0.6); */
+	box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	/* 	background-position: 50% 0; */
+	/* 	border: solid rgba(255,255,255,0.5) 3px; */
+	/*   border-radius:50%; */
+	/*   display: inline-block; */
+	/* position: relative; */
+	padding: 4px;
+	margin-left: auto;
+	margin-right: auto;
+	text-align:center;
+	width:auto;
+	z-index:1000;
+}
+
+i {
+	text-align:center;
+	padding-top:8px;
+	font-weight:900;
+}
+
+.link {
+	box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	background-position: 50% 0;
+	border: solid #d3d3d3 3px;
+	color: #d3d3d3;
+	cursor: pointer;
+	display: inline-block;
+	height: 40px;
+	margin: 1px;
+	width: 40px;
+	/*box-shadow: 2px 2px 2px #888888; */
+	/*opacity: 1; */
+	/*   text-align:center; */
+}
+
+.link i {
+	color: #d3d3d3;
+}
+
+.link:hover {
+	background-color:#d3d3d3;
+	background-position: 50% 100%;
+}
+
+.link:hover i {
+	color: black;
+}
 
 @media screen and (min-width: 601px) {
 	.socialLogos {
@@ -367,50 +429,50 @@ h4 {
 	}
 }
 
-.link {
-	background-position: 50% 0;
-	cursor: pointer;
-	display: inline-block;
-	height: 39px;
-	margin: 0 1px;
-	width: 39px;
-	/*box-shadow: 2px 2px 1px #888888;*/
-	opacity: 1;
-}
+/*.link {*/
+	/*background-position: 50% 0;*/
+	/*cursor: pointer;*/
+	/*display: inline-block;*/
+	/*height: 39px;*/
+	/*margin: 0 1px;*/
+	/*width: 39px;*/
+	/*!*box-shadow: 2px 2px 1px #888888;*!*/
+	/*opacity: 1;*/
+/*}*/
 
-.link:hover {
-	background-position: 50% 100%;
-}
+/*.link:hover {*/
+	/*background-position: 50% 100%;*/
+/*}*/
 
-.link.soundcloud {background-image: url(../images/links/icon_soundcloud.png);}
+/*.link.soundcloud {background-image: url(../images/links/icon_soundcloud.png);}*/
 
-.link.reverbnation {background-image: url(../images/links/icon_reverbnation.png);}
+/*.link.reverbnation {background-image: url(../images/links/icon_reverbnation.png);}*/
 
-.link.facebook {background-image: url(../images/links/icon_facebook.png);}
+/*.link.facebook {background-image: url(../images/links/icon_facebook.png);}*/
 
-.link.plus {background-image: url(../images/links/icon_plus.png);}
+/*.link.plus {background-image: url(../images/links/icon_plus.png);}*/
 
-.link.twitter {background-image: url(../images/links/icon_twitter.png);}
+/*.link.twitter {background-image: url(../images/links/icon_twitter.png);}*/
 
-.link.youtube {background-image: url(../images/links/icon_youtube.png);}
+/*.link.youtube {background-image: url(../images/links/icon_youtube.png);}*/
 
-.link.grooveshark {background-image: url(../images/links/icon_grooveshark.png);}
+/*.link.grooveshark {background-image: url(../images/links/icon_grooveshark.png);}*/
 
-.link.instagram {background-image: url(../images/links/icon_instagram.png);}
+/*.link.instagram {background-image: url(../images/links/icon_instagram.png);}*/
 
-.link.myspace {background-image: url(../images/links/icon_myspace.png);}
+/*.link.myspace {background-image: url(../images/links/icon_myspace.png);}*/
 
-.link.pinterest {background-image: url(../images/links/icon_pinterest.png);}
+/*.link.pinterest {background-image: url(../images/links/icon_pinterest.png);}*/
 
-.link.mail {background-image: url(../images/links/icon_mail.png);}
+/*.link.mail {background-image: url(../images/links/icon_mail.png);}*/
 
-.link.github {background-image: url(../images/links/icon_github.png);}
+/*.link.github {background-image: url(../images/links/icon_github.png);}*/
 
-.link.linkedin {background-image: url(../images/links/icon_linkedin.png);}
+/*.link.linkedin {background-image: url(../images/links/icon_linkedin.png);}*/
 
-.link.codepen {background-image: url(../images/links/icon_codepen.png);}
+/*.link.codepen {background-image: url(../images/links/icon_codepen.png);}*/
 
-.link.medium {background-image: url(../images/links/icon_medium.png);}
+/*.link.medium {background-image: url(../images/links/icon_medium.png);}*/
 
 /*=======  TWITTER FETCHER  ================================*/
 
