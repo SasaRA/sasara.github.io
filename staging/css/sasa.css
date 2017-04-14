@@ -232,7 +232,7 @@ h4 {
 		height: 20px;
 		/*width: 200px;*/
 		padding: 5px;
-		background-image: url(../images/SasaRA_Logo.svg);
+		background-image: url(../images/Sasa.svg);
 		background-repeat: no-repeat;
 		background-position: center;
 		margin-left: auto;
@@ -339,6 +339,15 @@ h4 {
 }
 
 /*========= SOCIAL LOGOS ===========*/
+
+/*.socialLogos {*/
+	/*position: relative;*/
+	/*padding: 5px;*/
+	/*!*width: 550px;*!*/
+	/*margin-left: auto;*/
+	/*margin-right: auto;*/
+/*}*/
+
 #socialLogos {
 	/*   background-color: rgba(0,0,0,0.6); */
 	box-sizing: border-box;
@@ -394,27 +403,20 @@ i {
 }
 
 @media screen and (min-width: 601px) {
-	.socialLogos {
+	#socialLogos {
 		position: relative;
 		padding: 10px;
-		width: 550px;
+		width: 566px;
 		/*margin-left: auto;*/
 		/*margin-right: auto;*/
 	}
 }
-.socialLogos {
-	position: relative;
-	padding: 5px;
-	/*width: 550px;*/
-	margin-left: auto;
-	margin-right: auto;
-}
 
 @media screen and (min-width: 200px) and (max-width: 600px) {
-	.socialLogos {
+	#socialLogos {
 		position: relative;
 		padding: 5px;
-		width: 280px;
+		width: 282px;
 		/*margin-left: auto;*/
 		/*margin-right: auto;*/
 	}
