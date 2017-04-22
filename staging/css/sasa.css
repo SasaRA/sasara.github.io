@@ -145,7 +145,7 @@ h4 {
 }
 
 #AllGlories {
-	font-size: 2vmin;
+	font-size: 2.5vmin;
 	padding: 5px;
 }
 
@@ -391,6 +391,7 @@ i {
 
 .link i {
 	color: #d3d3d3;
+	padding-top: 10px;
 }
 
 .link:hover {
@@ -422,7 +423,7 @@ i {
 	}
 
 	#AllGlories {
-		font-size: 3vmin;
+		font-size: 2.7vmin;
 		padding: 5px;
 	}
 
