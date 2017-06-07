@@ -28,6 +28,8 @@ var $jsLinks = [
 ];
 
 var $mainTL;
+var $socialTL;
+var $linkTL;
 
 var $mainStage = document.getElementById('mainStage'),
     $mainContainer = document.getElementById('mainContainer'),
@@ -69,8 +71,13 @@ var $socialList = [
     // email link is added on load //
 ];
 
+var $patreon_svg = '<path d="M2.32081783.3678855c.869042-.40526652 1.88661925-.47774603 2.80665096-.20727372.80652418.2346745 1.53190822.73363407 2.0426921 1.3983242.5050198.6523156.79854318 1.4641745.82647667 2.28752405.0354711.8511923-.21060967 1.71122356-.6952336 2.4134793-.71030882 1.0518368-1.9482503 1.72713368-3.22254963 1.73950823-.63803645.0008839-1.2760729.00044195-1.91366597 0 .00532067-1.34042898.0004434-2.68085797.00310373-4.0217289.00221694-.50647268.23011877-1.00499028.60921618-1.34131288.36180524-.3279256.85973083-.5002854 1.3474585-.46404565.50457642.03093638.98831357.2859405 1.30267622.68015833.3232304.3968695.46422805.93295272.38131434 1.4376576-.08114014.53122177-.41368172 1.01603898-.87790977 1.2882791-.5373872.3252739-1.2406018.3345548-1.7935076.04021728.00044338.43487706-.0008868.86975412.00044338 1.30463118.4934917.14407512 1.02201113.16838228 1.52392723.0539177.7431196-.16219502 1.4144102-.6174017 1.8444973-1.24187455.40969124-.5855814.59946164-1.31788962.52851943-2.02810043-.06030086-.6514317-.34052257-1.27944013-.78302457-1.7620476-.41013462-.4507872-.95860653-.77561914-1.55363427-.913507-.6837055-.162195-1.42372137-.07866678-2.05200326.23600036C1.64553673 1.7542771.962718 2.8206982.95207668 3.932198.95030312 5.2876532.95163328 6.6435504.9511899 7.99944755c-.3165796.0008839-.63360256.00044195-.95062554.00044195-.0004434-1.32584468.0004434-2.65168938-.0004434-3.97709212-.00443387-.56569374.11306415-1.13227137.3440697-1.6493508C.73215587 1.49662128 1.44778534.7691745 2.32081784.3678855z" />';
+
+var $socialArray = [];
+
 var $link = document.getElementsByClassName('link'),
     $link_soundcloud = document.getElementsByClassName('soundcloud'),
+    $link_patreon = document.getElementsByClassName('patreon'),
     $link_reverbnation = document.getElementsByClassName('reverbnation'),
     $link_youtube = document.getElementsByClassName('youtube'),
     $link_facebook = document.getElementsByClassName('facebook'),
@@ -82,8 +89,6 @@ var $link = document.getElementsByClassName('link'),
     $link_github = document.getElementsByClassName('github'),
     $link_codepen = document.getElementsByClassName('codepen'),
     $link_mail = document.getElementsByClassName('mail');
-
-var $linkArray = ['soundcloud', 'reverbnation', 'youtube', 'facebook', 'twitter', 'instagram', 'plus', 'medium', 'linkedin', 'github', 'codepen', 'mail'];
 
 var $sasaBgImage = document.getElementById("sasaBgImage");
 var $BgImage1 = "images/bg/SasaRA_BG_Photo_1.png";
@@ -119,7 +124,7 @@ var backstretchImages = [
 
 // trace for consistent console logging
 function trace(value) {
-    if ($debug == true) {
+    if ($debug === true) {
         console.log('<<< ', value, ' >>>')
     }
 }
@@ -136,6 +141,7 @@ function start() {
     preloadTwitterFetcher($tfConfig);
     buildMainTL(0.5,2);
     loadListeners();
+    slideShow("intro-bg",10,1.3,1.0,0);
 }
 
 function buildMainTL(d,t) {
@@ -149,7 +155,7 @@ function buildMainTL(d,t) {
         .add(loadSasaMsgTL(), 'sasaMsg')
         .add(loadHeadFootTL(), 'headFoot')
         .add(loadSocialTL(0.7), 'social')
-        .add(loadTwitterTL(0.3), 'twitter')
+        // .add(loadTwitterTL(0.3), 'twitter')
         // .call(mainStagerize,[],this,'+=2')
     ;
 
@@ -235,9 +241,9 @@ function loadHeadFootTL() {
 function loadSocialTL(d) {
     trace('loadSocialTL INIT');
 
-    tl = new TimelineLite();
+    $socialTL = new TimelineLite();
 
-    tl
+    $socialTL
         .delay(d)
         .set($socialLogos, {className: '-=hidden'})
         .set($link, {opacity: 1})
@@ -248,7 +254,7 @@ function loadSocialTL(d) {
         .staggerTo($link,0.2,{scale:0.85}, -0.035)
     ;
 
-    return tl;
+    return $socialTL;
 
 }
 
@@ -308,6 +314,28 @@ var sasaMessageize = once(function() {
     loadSasaMessage();
 });
 
+function linkCompress() {
+
+    // var link = document.getElementsByClassName('link')
+    $linkTL = new TimelineMax({paused:true,delay:0.2});
+
+    for (i=$link.length-1; i>=0; i--) {
+        // tl = new TimelineMax({delay:0.2});
+        $linkTL.to($link[i], 0.15, {x:-(i*41),opacity:0.5});
+    }
+
+    $linkTL.play();
+}
+
+function linkIn() {
+    $linkTL.reverse();
+}
+
+function linkOut() {
+    $linkTL.play();
+}
+
+
 function loadSocial(s) {
     trace('loadSocial LOADED');
 
@@ -326,9 +354,9 @@ function loadSocial(s) {
         str += ('<a ' + 'id="' + 'link_' + s[i] + '"' + ' class="link ' + s[i] + ' tooltip" title="' + s[i] + '" href="http://' + s[i] + '.sasara.me" target="_blank">' + toolTip + '</a>');
     }
     if(tip === true) {
-        str += ('<a class="link mail tooltip" title="email" href="mailto:ra@souljah.com?subject=Mail from SasaRA.me" target="_blank"><span class="tooltiptext">' + 'email' + '</span></a>');
+        str += ('<a id="link_mail" class="link mail tooltip" title="email" href="mailto:ra@souljah.com?subject=Mail from SasaRA.me" target="_blank"><span class="tooltiptext">' + 'email' + '</span></a>');
     } else {
-        str += ('<a class="link mail tooltip" title="email" href="mailto:ra@souljah.com?subject=Mail from SasaRA.me" target="_blank"></a>');
+        str += ('<a id="link_mail" class="link mail tooltip" title="email" href="mailto:ra@souljah.com?subject=Mail from SasaRA.me" target="_blank"></a>');
     }
 
     GSAP.insertHTML($socialLogos, str);
@@ -339,6 +367,7 @@ function loadSocial(s) {
         addEventListener.call(aTags[i],'mouseover',socialLinkOver);
         addEventListener.call(aTags[i],'mouseout',socialLinkOut);
     }
+
     // loadSocialLogos();
 }
 
@@ -365,10 +394,72 @@ function loadStorePromo() {
     GSAP.insertHTML($scTrackB, $scWeBelieveIframe);
 }
 
-function setBgImage(BgImageLink) {
+// ====================================
+//     FULL BACKGROUND SLIDE SHOW
+//     VANILLA JS & GSAP
+//     Example Call:
+//     slideShow("intro-bg",10,1.3,0.5,0);
+// ====================================
+
+
+var $slides;
+// var $slides = document.getElementsByClassName("intro-bg"); //slides
+var currentSlide = 0; //keep track on the current slide
+var stayTime; //time the slide stays
+var slideTime; //fade in / fade out time
+var alphaSet;
+
+function slideShow(slideClass,sTime,tTime,alpha,current) {
+    $slides = document.getElementsByClassName(slideClass); //slides
+    currentSlide = current; //keep track on the current slide
+    stayTime = sTime; //time the slide stays
+    slideTime = tTime; //fade in / fade out time
+    alphaSet = alpha;
+
+    TweenLite.set($slides, {autoAlpha:0, onComplete: function(){
+        TweenLite.to($slides[currentSlide],(slideTime*2), {autoAlpha:alphaSet});	//show first image
+        TweenLite.delayedCall(stayTime, nextSlide); //start the slideshow
+    }});	//hide all images
+
+}
+function nextSlide() {
+    TweenLite.to($slides[currentSlide], slideTime, {
+        autoAlpha: 0,
+        className: "-=bg-active"
+    }); //fade out the old slide
+    currentSlide = ++currentSlide % $slides.length; //find out which is the next slide
+    TweenLite.to($slides[currentSlide], slideTime, {
+        autoAlpha: alphaSet,
+        className: "+=bg-active"
+    }); //fade in the next slide
+    TweenLite.delayedCall(stayTime, nextSlide); //wait a couple of seconds before next slide
+}
+
+// ==========================================
+//     END FULL BACKGROUND SLIDE SHOW
+// ==========================================
+
+var $igBg01 = "https://instagram.fsnc1-4.fna.fbcdn.net/t51.2885-15/e35/17662439_342625969468558_7500373359771779072_n.jpg";
+var $igBg02 = "https://instagram.fsnc1-4.fna.fbcdn.net/t51.2885-15/e35/13355439_553003784901766_2013074610_n.jpg";
+
+function setBgImg(BgImageLink) {
     trace('setBGimage = ' + BgImageLink);
+    TweenMax.to($sasaBgImage,0.2,{opacity:0,onComplete:function(){
+        $sasaBgImage.src = BgImageLink;
+        loadBgImg();
+    }});
+
+}
+
+function loadBgImg() {
+    trace('loadBgImg INIT');
+    tl = new TimelineLite({paused:true});
+    tl
+        .set($sasaBgImage,{scale:1.03,opacity:0})
+        .to($sasaBgImage,0.7,{scale:1,opacity:1})
+    ;
     $sasaBgImage.classList.remove('hidden');
-    $sasaBgImage.src = BgImageLink
+    tl.play();
 }
 
 function loadMainStageContent() {
@@ -418,6 +509,7 @@ function setDocSize() {
 
     $docCenterH = Math.round($docHeight / 2);
 }
+
 
 //======================================
 //========= CUSTOM FUNCTIONS =============
@@ -783,7 +875,22 @@ window.addEventListener('load', init);
 //     tl.play();
 // }
 
-
+// function pushSocialArray(e) {
+//
+//     for (i = 0; i < ($socialLogos.childNodes.length - 1);i++)
+//     {
+//         linkCurrent = ("$" + $socialLogos.childNodes[i].id );
+//
+//         trace("$socialLogos.childNodes[i].id = " + linkCurrent);
+//
+//         $socialArray.push(linkCurrent);
+//     }
+//
+//     $socialArray.push('$link_mail');
+//
+//     trace("$socialArray = " + $socialArray);
+//
+// }
 
 
 
