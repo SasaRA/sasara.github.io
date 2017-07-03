@@ -1,5 +1,5 @@
 /*********************************************************************
-*  #### Twitter Post Fetcher v16.0.3 ####
+*  #### Twitter Post Fetcher v17.0.1 ####
 *  Coded by Jason Mayes 2015. A present to all the developers out there.
 *  www.jasonmayes.com
 *  Please keep this disclaimer with my code if you use it. Thanks. :-)
@@ -35,6 +35,7 @@
   var customCallbackFunction = null;
   var showInteractionLinks = true;
   var showImages = false;
+  var useEmoji = false;
   var targetBlank = true;
   var lang = 'en';
   var permalinks = true;
@@ -121,6 +122,9 @@
       if (config.showImages === undefined) {
         config.showImages = false;
       }
+      if (config.useEmoji === undefined) {
+        config.useEmoji = false;
+      }
       if (config.linksInNewWindow === undefined) {
         config.linksInNewWindow = true;
       }
@@ -146,6 +150,7 @@
         customCallbackFunction = config.customCallback;
         showInteractionLinks = config.showInteraction;
         showImages = config.showImages;
+	useEmoji = config.useEmoji;
         targetBlank = config.linksInNewWindow;
         permalinks = config.showPermalinks;
         dataOnly = config.dataOnly;
@@ -158,34 +163,47 @@
         script.type = 'text/javascript';
         if (config.list !== undefined) {
           script.src = 'https://syndication.twitter.com/timeline/list?' +
-              'callback=twitterFetcher.callback&dnt=false&list_slug=' +
+              'callback=__twttrf.callback&dnt=false&list_slug=' +
               config.list.listSlug + '&screen_name=' + config.list.screenName +
               '&suppress_response_codes=true&lang=' + (config.lang || lang) +
               '&rnd=' + Math.random();
         } else if (config.profile !== undefined) {
           script.src = 'https://syndication.twitter.com/timeline/profile?' +
-              'callback=twitterFetcher.callback&dnt=false' +
+              'callback=__twttrf.callback&dnt=false' +
               '&screen_name=' + config.profile.screenName +
               '&suppress_response_codes=true&lang=' + (config.lang || lang) +
               '&rnd=' + Math.random();
         } else if (config.likes !== undefined) {
           script.src = 'https://syndication.twitter.com/timeline/likes?' +
-              'callback=twitterFetcher.callback&dnt=false' +
+              'callback=__twttrf.callback&dnt=false' +
               '&screen_name=' + config.likes.screenName +
               '&suppress_response_codes=true&lang=' + (config.lang || lang) +
               '&rnd=' + Math.random();
         } else {
           script.src = 'https://cdn.syndication.twimg.com/widgets/timelines/' +
               config.id + '?&lang=' + (config.lang || lang) +
-              '&callback=twitterFetcher.callback&' +
+              '&callback=__twttrf.callback&' +
               'suppress_response_codes=true&rnd=' + Math.random();
         }
         head.appendChild(script);
       }
     },
     callback: function(data) {
+      if (data === undefined || data.body === undefined) {
+        inProgress = false;
+
+        if (queue.length > 0) {
+          twitterFetcher.fetch(queue[0]);
+          queue.splice(0,1);
+        }
+        return;
+      }
+
       // Remove emoji and summary card images.
-      data.body = data.body.replace(/(<img[^c]*class="Emoji[^>]*>)|(<img[^c]*class="u-block[^>]*>)/g, '');
+      if(!useEmoji){
+        data.body = data.body.replace(/(<img[^c]*class="Emoji[^>]*>)|(<img[^c]*class="u-block[^>]*>)/g, '');
+      }
+
       // Remove display images.
       if (!showImages) {
         data.body = data.body.replace(/(<img[^c]*class="NaturalImage-image[^>]*>|(<img[^c]*class="CroppedImage-image[^>]*>))/g, '');
@@ -398,6 +416,8 @@
   };
 
   // It must be a global variable because it will be called by JSONP.
+  window.__twttrf = twitterFetcher;
   window.twitterFetcher = twitterFetcher;
   return twitterFetcher;
 }));
+
