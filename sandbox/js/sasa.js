@@ -68,6 +68,7 @@ var $socialList = [
     ,'linkedin'
     ,'github'
     ,'codepen'
+    // ,'paypal'
     // email link is added on load //
 ];
 
