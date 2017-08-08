@@ -5,7 +5,7 @@
 
 var $debug = true,
     $firstTime = true;
-    $playIntro = false;
+    $playIntro = true;
 
 var $defaultEase = "Expo.easeOut";
 
@@ -55,9 +55,9 @@ var $nimaiOverlay = document.getElementById('nimaiOverlay'),
 
 var $socialList = [
     'soundcloud'
-    ,'patreon'
+    // ,'patreon'
     ,'twitter'
-    ,'reverbnation'
+    // ,'reverbnation'
     ,'youtube'
     ,'instagram'
     // ,'tumblr'
