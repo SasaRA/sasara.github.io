@@ -150,7 +150,7 @@ function loadHeader() {
     $AllGlories.classList.remove('hidden');
     loadSocialLogos();
     loadSasaMessage();
-    loadTwitterFetcher($tfConfig);
+    // loadTwitterFetcher($tfConfig);
     // loadInstafeed();
     // $sasaLogo.addEventListener("click", loadMainStageContent);
 }
