@@ -216,6 +216,8 @@ h4 {
 	margin-right: auto;
 }
 
+
+
 /*====================================*/
 /*FULL BACKGROUND SLIDE SHOW*/
 /*====================================*/
@@ -808,7 +810,7 @@ i {
 /* ===================== SC SWIPER ====================== */
 
 .soundcloudPlayer {
-	padding: 5px;
+	padding: 5%;
 	/*position: relative;*/
 	opacity: 0.75;
 }

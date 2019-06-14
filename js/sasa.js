@@ -76,7 +76,9 @@ var mySwiper;
 
 var $sc_ID = 1796918; //SASA HASID RA SOUNDCLOUD USER ID #
 var $sc_NightPlaylist = '<iframe id="scPlaylist" width="100%" height="163" scrolling="no" frameborder="no" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/3416309&amp;color=ff5500&amp;auto_play=false&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false"></iframe>';
-var $sc_Contract = '<iframe width="100%" height="300" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/572970957&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"></iframe>';
+var $sc_Contract = '<iframe width="100%" height="500" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/572970957&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"></iframe>';
+
+var $coverContract = '../images/covers/contract/ContRAct_Cover_1425x1425';
 
 var $sc_BabyBoy = 165546030;
 var $sc_OneThing = 125842224;
@@ -142,6 +144,7 @@ function loadContent() {
 
     loadHeader();
     loadFooter();
+    // setBgImage($coverContract);
     // setMainStage();
     loadMainStageContent();
 }
@@ -183,6 +186,7 @@ function loadMainStageContent() {
     trace('loadMainStageContent INIT');
     $mainStage.classList.remove('hidden');
     scLoadPlaylist($sc_Contract);
+    // slideShow("intro-bg",15,4.5,0.5,0);
 }
 
 function setDocSize() {
@@ -254,7 +258,7 @@ function scLoadPlaylist(playlist) {
     trace('scLoadPlaylist INIT');
     $scPlayer.classList.remove('hidden');
     insertHTML($scPlayer, playlist);
-    $scPlayer.addEventListener("mouseover", scPlaylistOpen);
+    // $scPlayer.addEventListener("mouseover", scPlaylistOpen);
     // $scPlayer.addEventListener("mouseout", scPlaylistClose);
 }
 
@@ -328,6 +332,50 @@ function loadBackstretch() {
     });
     // $.backstretch('images/bg/SasaRA_BG_Photo_1.jpg');
 
+}
+
+
+
+// ====================================
+//     FULL BACKGROUND SLIDE SHOW
+//     VANILLA JS & GSAP
+//     Example Call:
+//     slideShow("intro-bg",10,1.3,0.5,0);
+// ====================================
+
+
+
+var $slides;
+// var $slides = document.getElementsByClassName("intro-bg"); //slides
+var currentSlide = 0; //keep track on the current slide
+var stayTime; //time the slide stays
+var slideTime; //fade in / fade out time
+var alphaSet;
+
+function slideShow(slideClass,sTime,tTime,alpha,current) {
+    $slides = document.getElementsByClassName(slideClass); //slides
+    currentSlide = current; //keep track on the current slide
+    stayTime = sTime; //time the slide stays
+    slideTime = tTime; //fade in / fade out time
+    alphaSet = alpha;
+
+    TweenLite.set($slides, {autoAlpha:0, onComplete: function(){
+            TweenLite.to($slides[currentSlide],(slideTime*2), {autoAlpha:alphaSet});	//show first image
+            TweenLite.delayedCall(stayTime, nextSlide); //start the slideshow
+        }});	//hide all images
+
+}
+function nextSlide() {
+    TweenLite.to($slides[currentSlide], slideTime, {
+        autoAlpha: 0,
+        className: "-=bg-active"
+    }); //fade out the old slide
+    currentSlide = ++currentSlide % $slides.length; //find out which is the next slide
+    TweenLite.to($slides[currentSlide], slideTime, {
+        autoAlpha: alphaSet,
+        className: "+=bg-active"
+    }); //fade in the next slide
+    TweenLite.delayedCall(stayTime, nextSlide); //wait a couple of seconds before next slide
 }
 
 //======================================
