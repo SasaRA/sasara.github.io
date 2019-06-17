@@ -810,7 +810,8 @@ i {
 /* ===================== SC SWIPER ====================== */
 
 .soundcloudPlayer {
-	padding: 5%;
+    padding-left: 3%;
+    padding-right: 3%;
 	/*position: relative;*/
 	opacity: 0.75;
 }
