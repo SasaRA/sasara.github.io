@@ -165,7 +165,7 @@ h4 {
 #nimaiFooter {
 	/*position: absolute;*/
     bottom:5px;
-	margin-top:5px;
+	margin-top:10px;
 	margin-bottom:10px;
 }
 
@@ -813,7 +813,8 @@ i {
 .soundcloudPlayer {
     padding-left: 3%;
     padding-right: 3%;
-	/*position: relative;*/
+    margin-top: 5px;
+    margin-bottom: 5px;
 	opacity: 0.85;
 }
 
