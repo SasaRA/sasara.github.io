@@ -358,6 +358,12 @@ h4 {
 }
 
 
+#paypal_btn_donate	{
+	margin: 10px;
+	padding: 40px;
+}
+
+
 #heartcoreLogo {
 	height: 88px;
 	width: 160px;
