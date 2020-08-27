@@ -399,7 +399,7 @@ function socialLinkOver(l) {
 
 function socialLinkOut() {
     // trace('$link mouseout');
-    TweenMax.to(this,0.1,{scale:1.00});
+    TweenMax.to(this,0.3,{scale:1.00});
 }
 
 function preloadTwitterFetcher(config) {
