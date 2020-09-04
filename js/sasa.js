@@ -11,7 +11,7 @@ var $defaultEase = "Expo.easeOut";
 
 var $sc_NightPlaylist = '<iframe id="scPlaylist" width="90%" height="300px" scrolling="no" frameborder="no" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/3416309&amp;color=ff5500&amp;auto_play=false&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false"></iframe>';
 
-var $sc_Contract = '<iframe id="scPlaylist" width="90%" height="300px" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/572970957&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"></iframe>';
+var $sc_Contract = '<iframe id="scPlaylist" width="90%" height="100px" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/572970957&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"></iframe>';
 
 var $sasaMessageList = [
     'LOVE REIGNS SUPREME',
@@ -526,7 +526,7 @@ function scLoadPlaylist(playlist) {
     trace('scLoadPlaylist INIT');
     $scPlayer.classList.remove('hidden');
     GSAP.insertHTML($scPlayer, playlist);
-    TweenMax.to(scPlaylist, 0.5, {height: 500});
+    TweenMax.to(scPlaylist, 0.5, {height: 300});
 }
 
 function setDocSize() {
