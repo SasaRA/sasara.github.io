@@ -13,6 +13,8 @@ var $sc_NightPlaylist = '<iframe id="scPlaylist" width="90%" height="300px" scro
 
 var $sc_Contract = '<iframe id="scPlaylist" width="90%" height="100px" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/572970957&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"></iframe>';
 
+var $sc_focus = '<iframe id="scPlaylist" width="90%" height="100px" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/1238406343&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"></iframe>';
+
 var $sasaMessageList = [
     'LOVE REIGNS SUPREME',
     'EVERY DAY IS A BLESSING',
@@ -500,7 +502,7 @@ function loadMainStageContent() {
     // TweenMax.set($socialLogos,{height:'auto'});
     // TweenMax.set($twitterFeed,{height:'auto'});
     // loadTwitterFetcher($tfConfig);
-    scLoadPlaylist($sc_Contract);
+    scLoadPlaylist($sc_focus);
 
     // loadStorePromo();
 }
