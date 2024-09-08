@@ -61,7 +61,7 @@ var $nimaiOverlay = document.getElementById('nimaiOverlay'),
 
 var $socialList = [
     'soundcloud'
-    ,'twitter'
+    ,'x'
     ,'instagram'
     ,'youtube'
     ,'facebook'
@@ -87,6 +87,7 @@ var $link = document.getElementsByClassName('link'),
     $link_youtube = document.getElementsByClassName('youtube'),
     $link_facebook = document.getElementsByClassName('facebook'),
     $link_twitter = document.getElementsByClassName('twitter'),
+    $link_x = document.getElementsByClassName('x'),
     $link_instagram = document.getElementsByClassName('instagram'),
     $link_plus = document.getElementsByClassName('plus'),
     $link_medium = document.getElementsByClassName('medium'),
