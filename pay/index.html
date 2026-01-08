@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -34,7 +35,8 @@
             width: 200px;
             height: auto;
             object-fit: contain;
-            margin-top: 20px;
+            /*margin-top: 20px;*/
+            max-height: 100px;
         }
 
         .logo-footer {
@@ -42,11 +44,21 @@
             height: auto;
             object-fit: contain;
             opacity: 0.8;
-            margin-top: 40px;
+            margin-top: 10px;
+            max-height: 80px;
         }
 
-        h1 { font-size: 1.4rem; color: #333; margin: 20px 0 30px; }
+        h1 { font-size: 1.4rem; color: #333; margin: 10px 0 15px; }
 
+        a {
+            display: block;
+            text-decoration: none;
+            margin-block-start: 1em;
+            margin-block-end: 1em;
+            margin-inline-start: 0px;
+            margin-inline-end: 0px;
+            unicode-bidi: isolate;
+        }
         .payment-card {
             background: white;
             border-radius: 18px;
@@ -94,16 +106,17 @@
         .square  { background-color: var(--square-black); }
 
         .header-text {
-            font-size: 0.8rem;
+            font-size: 0.5rem;
             color: #999;
             margin-top: 10px;
-            margin-bottom: 40px;
+            margin-bottom: 10px;
         }
         .footer-text {
-            font-size: 0.8rem;
+            font-size: 0.5rem;
             color: #999;
             margin-top: 10px;
-            margin-bottom: 40px;
+            margin-bottom: 10px;
+            max-height: 80px;
         }
     </style>
 </head>
@@ -140,7 +153,8 @@
     </div>-->
 
     <img src="https://sasara.github.io/images/HeartcoreMusic.svg" alt="Heartcore Music Logo" class="logo-footer">
-    <p class="footer-text">Another NIMAI GROUP WebArt Masterpiece℠</p>
+    <a class="footer-text" href="http://www.nimaigroup.com/" target="_blank">Another NIMAI GROUP WebArt Masterpiece℠</a>
+<!--    <a class="footer-text" href="http://www.nimaigroup.com/" target="_blank">Another NIMAI GROUP WebArt Masterpiece&#8480</a>-->
 </div>
 
 <script>
