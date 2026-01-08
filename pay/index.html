@@ -3,26 +3,56 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pay Me</title>
+    <title>Payment Portal</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
     <style>
+        :root {
+            --paypal-blue: #003087;
+            --venmo-blue: #3d95ce;
+            --cashapp-green: #00d632;
+            --square-black: #2b2b2b;
+            --bg-color: #f4f7f9;
+        }
+
         body {
             font-family: -apple-system, system-ui, sans-serif;
-            background-color: #f8f9fa;
+            background-color: var(--bg-color);
             display: flex;
             justify-content: center;
-            padding: 20px;
             margin: 0;
+            padding: 20px;
         }
-        .container { width: 100%; max-width: 450px; text-align: center; }
-        h1 { color: #333; margin-bottom: 30px; }
+
+        .container {
+            width: 100%;
+            max-width: 400px;
+            text-align: center;
+        }
+
+        /* Logo Styles - Fixed 200px width, no max-height */
+        .logo-header {
+            width: 200px;
+            height: auto;
+            object-fit: contain;
+            margin-top: 20px;
+        }
+
+        .logo-footer {
+            width: 200px;
+            height: auto;
+            object-fit: contain;
+            opacity: 0.8;
+            margin-top: 40px;
+        }
+
+        h1 { font-size: 1.4rem; color: #333; margin: 20px 0 30px; }
 
         .payment-card {
             background: white;
-            border-radius: 16px;
-            padding: 20px;
-            margin-bottom: 20px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            border-radius: 18px;
+            padding: 15px;
+            margin-bottom: 15px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
         }
 
         .btn {
@@ -33,74 +63,108 @@
             padding: 16px;
             border-radius: 12px;
             font-size: 1.1rem;
-            margin-bottom: 10px;
+            transition: transform 0.1s;
         }
+
+        .btn:active { transform: scale(0.98); }
 
         .qr-toggle {
             background: none;
-            border: 1px solid #ddd;
-            color: #666;
-            padding: 8px 15px;
-            border-radius: 20px;
+            border: none;
+            color: #888;
+            font-size: 0.85rem;
+            margin-top: 10px;
             cursor: pointer;
-            font-size: 0.9rem;
+            text-decoration: underline;
+            padding: 10px;
         }
 
         .qr-container {
-            margin-top: 15px;
-            display: none; /* Hidden by default */
+            display: none;
             justify-content: center;
-            padding: 10px;
-            background: #fff;
+            padding: 15px;
+            background: white;
+            margin-top: 5px;
         }
 
         /* Brand Colors */
-        .paypal  { background-color: #003087; }
-        .venmo   { background-color: #3d95ce; }
-        .cashapp { background-color: #00d632; }
-        .square  { background-color: #2b2b2b; }
+        .paypal  { background-color: var(--paypal-blue); }
+        .venmo   { background-color: var(--venmo-blue); }
+        .cashapp { background-color: var(--cashapp-green); }
+        .square  { background-color: var(--square-black); }
+
+        .header-text {
+            font-size: 0.8rem;
+            color: #999;
+            margin-top: 10px;
+            margin-bottom: 40px;
+        }
+        .footer-text {
+            font-size: 0.8rem;
+            color: #999;
+            margin-top: 10px;
+            margin-bottom: 40px;
+        }
     </style>
 </head>
 <body>
 
 <div class="container">
-    <h1>Select Payment Method</h1>
+    <p class="header-text">ALL GLORIES TO THE SUPREME LOVERS AND THEIR DIVINE SERVITORS</p>
+    <img src="https://sasara.github.io/images/SasaRA_Logo.svg" alt="Sasa RA Logo" class="logo-header">
+
+    <h1>Secure Payments</h1>
 
     <div class="payment-card">
         <a href="https://paypal.me/sasara" class="btn paypal">Pay with PayPal</a>
         <button class="qr-toggle" onclick="toggleQR('qr-paypal', 'https://paypal.me/YOUR_USER')">Show QR Code</button>
-        <div id="qr-paypal" class="qr-container"></div>
+        <div id="qr-paypal" class="qr-container payment-qr"></div>
     </div>
 
     <div class="payment-card">
         <a href="https://venmo.com/sasara" class="btn venmo">Pay with Venmo</a>
         <button class="qr-toggle" onclick="toggleQR('qr-venmo', 'https://venmo.com/YOUR_USER')">Show QR Code</button>
-        <div id="qr-venmo" class="qr-container"></div>
+        <div id="qr-venmo" class="qr-container payment-qr"></div>
     </div>
 
     <div class="payment-card">
         <a href="https://cash.app/$SASARACASH" class="btn cashapp">Pay with Cash App</a>
         <button class="qr-toggle" onclick="toggleQR('qr-cash', 'https://cash.app/$YOUR_USER')">Show QR Code</button>
-        <div id="qr-cash" class="qr-container"></div>
+        <div id="qr-cash" class="qr-container payment-qr"></div>
     </div>
+
+    <!--<div class="payment-card">
+        <a href="YOUR_SQUARE_LINK" class="btn square">Pay with Card / Square</a>
+        <button class="qr-toggle" onclick="toggleQR('qr-square', 'YOUR_SQUARE_LINK')">Show QR Code</button>
+        <div id="qr-square" class="qr-container payment-qr"></div>
+    </div>-->
+
+    <img src="https://sasara.github.io/images/HeartcoreMusic.svg" alt="Heartcore Music Logo" class="logo-footer">
+    <p class="footer-text">Another NIMAI GROUP WebArt Masterpiece℠</p>
 </div>
 
 <script>
     function toggleQR(id, link) {
-        const container = document.getElementById(id);
-        
-        // Toggle visibility
-        if (container.style.display === "flex") {
+        const targetContainer = document.getElementById(id);
+        const allQRContainers = document.querySelectorAll('.payment-qr');
+        const isAlreadyOpen = (targetContainer.style.display === "flex");
+
+        allQRContainers.forEach(container => {
             container.style.display = "none";
-        } else {
-            // Clear previous QR and generate new one if not already created
-            container.innerHTML = "";
-            new QRCode(container, {
+        });
+
+        if (!isAlreadyOpen) {
+            targetContainer.innerHTML = "";
+            new QRCode(targetContainer, {
                 text: link,
-                width: 180,
-                height: 180
+                width: 160,
+                height: 160,
+                colorDark : "#000000",
+                colorLight : "#ffffff",
+                correctLevel : QRCode.CorrectLevel.H
             });
-            container.style.display = "flex";
+            targetContainer.style.display = "flex";
+            targetContainer.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
         }
     }
 </script>
