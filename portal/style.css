@@ -1,0 +1,105 @@
+:root {
+    --theme: #00FFCC;
+    --bpm: 0.5s;
+    --bg-dark: #0a0a0a;
+}
+
+body {
+    margin: 0;
+    background: var(--bg-dark);
+    color: white;
+    font-family: 'Courier New', Courier, monospace;
+    overflow: hidden;
+}
+
+/* VIDEOS */
+#video-main, #ghost-tape {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    object-fit: cover;
+    z-index: 1;
+}
+
+/* GHOST TAPE OVERLAY */
+#ghost-tape {
+    filter: grayscale(1) contrast(1.5) brightness(0.6);
+    z-index: 2;
+}
+.scanlines {
+    position: fixed;
+    top: 0; width: 100%; height: 100%;
+    background: repeating-linear-gradient(0deg, rgba(0,0,0,0.1), rgba(0,0,0,0.1) 1px, transparent 1px, transparent 2px);
+    z-index: 3;
+    pointer-events: none;
+}
+
+/* UI LAYER */
+#loader-portal {
+    position: fixed;
+    z-index: 10;
+    width: 100%; height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: black;
+    transition: opacity 1s ease;
+}
+
+.ritual-art {
+    width: 250px; height: 250px;
+    border-radius: 50%;
+    box-shadow: 0 0 20px var(--theme);
+    animation: pulse var(--bpm) infinite;
+    z-index: 4;
+}
+
+/* VISUALIZER */
+#visualizer-container {
+    position: absolute; bottom: 15%; left: 0; right: 0;
+    display: flex; justify-content: center; gap: 5px;
+    z-index: 5;
+}
+.bar {
+    width: 6px; height: 30px;
+    background: var(--theme);
+    animation: bounce var(--bpm) infinite ease-in-out;
+}
+.bar:nth-child(odd) { animation-duration: calc(var(--bpm) * 0.8); }
+
+@keyframes bounce { 0%, 100% { height: 10px; } 50% { height: 60px; } }
+@keyframes pulse { 0% { transform: scale(1); } 50% { transform: scale(1.05); } }
+
+/* MENU & PASSPORT */
+#song-menu {
+    position: fixed; bottom: -100%; left: 0; width: 100%; height: 85%;
+    background: rgba(10, 10, 10, 0.95);
+    backdrop-filter: blur(10px);
+    transition: bottom 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 20;
+    border-top: 1px solid var(--theme);
+    padding: 20px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+#song-menu.open { bottom: 0; }
+
+#passport-card {
+    background: linear-gradient(135deg, #111, #222);
+    border: 1px solid var(--theme);
+    padding: 20px;
+    width: 300px;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* UTILS */
+.hidden { display: none !important; }
+.blur { filter: blur(10px); }
+#director-hud {
+    position: fixed; top: 10px; right: 10px;
+    background: red; color: white; padding: 5px;
+    font-weight: bold; z-index: 100;
+}

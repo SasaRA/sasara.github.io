@@ -1,0 +1,10 @@
+Director's HUD Cheat Sheet
+===========================
+Enabled by pressing 'D' on your keyboard during testing.
+
+Display       |  Meaning             |  Action Required
+________________________________________________________
+00:12.450     |  Current Video Time  |  Use this to find the exact second for end_trigger in JSON.
+BPM: 128      |  Current BPM Setting |  Verifies if the pulse animation matches the audio speed.
+LYRIC: "..."  |  Active Subtitle     |  Shows which lyric line is currently active for capturing.
+

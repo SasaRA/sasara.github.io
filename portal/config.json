@@ -1,0 +1,47 @@
+{
+  "active_release_id": "track-001",
+  "features": {
+    "haptics_enabled": true,
+    "ghost_tape_enabled": true,
+    "visualizer_enabled": true,
+    "auto_redirect_on_end": false
+  },
+  "releases": [
+    {
+      "id": "track-001",
+      "title": "Excite Money",
+      "bpm": 128,
+      "color_theme": "#00FFCC",
+      "status": "active",
+      "artist": {
+        "name": "SASA HASID RA",
+        "handle": "@HASIDRA"
+      },
+      "assets": {
+        "cover_art": "media/excite_money/cover.jpg",
+        "video_portrait": "media/neon/video.mp4",
+        "ghost_tape": "media/excite_money/ghost.mp4",
+        "full_audio": "media/excite_money/audio.mp3",
+        "hype_preview": "media/excite_money/hype.mp3",
+        "sting_audio": "media/excite_money/sting.mp3"
+      },
+      "timeline": {
+        "end_trigger": 22.4,
+        "lyrics": [
+          { "time": 2.5, "text": "WELCOME TO THE MULTIVERSE" },
+          { "time": 8.0, "text": "BREAK THE GLASS" },
+          { "time": 15.2, "text": "NO TURNING BACK" }
+        ]
+      }
+    },
+    {
+      "id": "track-002",
+      "title": "FUTURE SIGNAL",
+      "status": "leaked",
+      "unlock_date": "2026-03-01T00:00:00",
+      "assets": {
+        "cover_art": "media/future/cover_blur.jpg"
+      }
+    }
+  ]
+}

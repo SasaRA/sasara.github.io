@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>SASARA PORTAL</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+</head>
+<body>
+
+<div id="loader-portal" onmousedown="startCharge()" onmouseup="cancelCharge()" ontouchstart="startCharge()" ontouchend="cancelCharge()">
+    <video id="ghost-tape" loop muted playsinline class="hidden"></video>
+    <div class="scanlines"></div>
+    <img src="" id="loading-cover-art" class="ritual-art">
+    <div id="stabilize-counter">HOLD TO STABILIZE</div>
+</div>
+
+<div id="performance-container">
+    <video id="video-main" playsinline muted class="hidden"></video>
+    <div id="visualizer-container" class="hidden">
+        <div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div>
+    </div>
+    <div id="lyric-stream" onclick="captureLyric()"></div>
+</div>
+
+<div id="nav-trigger" onclick="toggleMenu()">
+    <div class="outer-circle"><div class="inner-dot"></div></div>
+</div>
+
+<div id="director-hud" class="hidden">
+    <span id="hud-time">00:00:00</span> | BPM: <span id="hud-bpm">0</span>
+</div>
+
+<div id="song-menu">
+    <div id="passport-hero">
+        <div id="passport-card">
+            <div class="pass-header">MULTIVERSE PASS</div>
+            <h1 id="pass-artist"></h1>
+            <h2 id="pass-song"></h2>
+            <div id="pass-lyric-box">"WAITING FOR SIGNAL..."</div>
+            <div id="pass-footer">VALIDATED BY <span id="pass-handle"></span></div>
+        </div>
+        <button class="cta-primary" onclick="savePassport()">EXPORT PASSPORT</button>
+    </div>
+
+    <div id="song-list"></div>
+
+    <div id="email-footer">
+        <input type="email" id="fan-email" placeholder="ENTER EMAIL TO DECRYPT">
+        <button onclick="submitEmail()">JOIN</button>
+    </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
