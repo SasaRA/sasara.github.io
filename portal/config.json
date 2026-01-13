@@ -26,11 +26,12 @@
         "sting_audio": "media/excite_money/sting.mp3"
       },
       "timeline": {
-        "end_trigger": 22.4,
+        "end_trigger": 37.4,
         "lyrics": [
-          { "time": 2.5, "text": "WELCOME TO THE MULTIVERSE" },
-          { "time": 8.0, "text": "BREAK THE GLASS" },
-          { "time": 15.2, "text": "NO TURNING BACK" }
+          { "time": 4.5, "text": "MONEY DON'T MOVE ME - I MOVE MONEY" },
+          { "time": 8.0, "text": "MONEY DON'T MAKE ME - I MAKE MONEY" },
+          { "time": 11.5, "text": "SO MONEY DON'T CONTROL ME - UH UH" },
+          { "time": 15.2, "text": "MONEY DON'T EXCITE ME - I EXCITE MONEY" }
         ]
       }
     },
