@@ -522,8 +522,93 @@ h4 {
 	}
 }
 
-/*========= SOCIAL LOGOS ===========*/
 
+/*========= MODERNIZED SOCIAL MENU ===========*/
+
+.socialLogos {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px;           /* Clean spacing between squares */
+    margin: 20px auto;
+    width: 480px;       /* Desktop: Fits 10 icons (40px + gap) in one line */
+    transition: width 0.3s ease;
+}
+
+.link {
+    display: flex;
+    width: 40px;
+    height: 40px;
+    border: 3px solid #c6c6c6;
+    background-color: transparent;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box; /* Ensures border stays inside the 40px */
+    transition: all 0.25s ease;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* The Icon Style */
+.link i {
+    color: #c6c6c6;
+    font-size: 18px;    /* Sized to look balanced in a 40px square */
+    transition: color 0.25s ease;
+}
+
+/* Rollover: Invert Effect */
+.link:hover {
+    background-color: #c6c6c6;
+}
+
+.link:hover i {
+    color: #000000;      /* Icon turns black on the grey background */
+}
+
+/* The 5/5 Split for Mobile/Smaller Screens */
+@media screen and (max-width: 600px) {
+    .socialLogos {
+        width: 240px;    /* Forces exactly 5 icons per row */
+        gap: 8px;
+    }
+    #AllGlories {
+        font-size: 2.7vmin;
+        padding: 5px;
+    }
+
+    .sasaFooterCredit {
+        font-size: 2.7vmin;
+    }
+}
+
+/* Cleanup: Removing the old tooltip "pop" for a smooth fade */
+.tooltip .tooltiptext {
+    visibility: hidden;
+    width: 80px;
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    border-radius: 4px;
+    padding: 5px;
+    position: absolute;
+    z-index: 10;
+    bottom: 125%;
+    left: 50%;
+    transform: translateX(-50%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    font-size: 12px;
+    pointer-events: none; /* Prevents tooltip from flickering */
+}
+
+.tooltip:hover .tooltiptext {
+    visibility: visible;
+    opacity: 1;
+}
+
+/*========= OLD SOCIAL LOGOS ===========*/
+
+/*
 .socialLogos {
 	position: relative;
 	padding: 5px;
@@ -561,7 +646,7 @@ h4 {
 	height: 39px;
 	margin: 2px 4px;
 	width: 39px;
-	/*box-shadow: 2px 2px 1px #888888;*/
+	!*box-shadow: 2px 2px 1px #888888;*!
 	opacity: 1;
 }
 
@@ -617,150 +702,18 @@ h4 {
 
 .link.medium {background-image: url(../images/links/icon_medium.png);}
 
-/*=======  TWITTER FETCHER  ================================*/
 
-
-
-
-@media screen and (min-width: 200px) and (max-width: 399px) {
-	.twitterFeed {
-		background-color: rgba(255,255,255,0.3);
-		-moz-border-radius: 10px;
-		-webkit-border-radius: 10px;
-		border-radius: 10px; /* future proofing */
-		-khtml-border-radius: 10px; /* for old Konqueror browsers */
-		line-height: 1.3em;
-		padding: 0 5px 0px;
-		margin-left: auto;
-		margin-right: auto;
-		width: 80%;
-	}
-
-	.interact a {
-		font-size: 3.5vmin !important;
-	}
-
-	.twitterBG {
-		font-size: 6vmin;
-		opacity: 0.15;
-		z-index: 10;
-		margin-top: -5px;
-		margin-bottom: -3px;
-	}
-}
-
-
-@media screen and (min-width: 400px) and (max-width: 600px) {
-	.twitterFeed {
-		background-color: rgba(255,255,255,0.3);
-		-moz-border-radius: 10px;
-		-webkit-border-radius: 10px;
-		border-radius: 10px; /* future proofing */
-		-khtml-border-radius: 10px; /* for old Konqueror browsers */
-		line-height: 1.3em;
-		padding: 0 5px 0px;
-		margin-left: auto;
-		margin-right: auto;
-		width: 70%;
-	}
-	.twitterBG {
-		font-size: 4vmin;
-		opacity: 0.15;
-		z-index: 10;
-		margin-top: -5px;
-		margin-bottom: -3px;
-	}
-}
-
-@media screen and (min-width: 601px) {
-	.twitterFeed {
-		background-color: rgba(255,255,255,0.3);
-		-moz-border-radius: 10px;
-		-webkit-border-radius: 10px;
-		border-radius: 10px; /* future proofing */
-		-khtml-border-radius: 10px; /* for old Konqueror browsers */
-		line-height: 1.3em;
-		padding: 0 5px 0px;
-		width:60%;
-		margin-left: auto;
-		margin-right: auto;
-	}
-	.twitterBG {
-		font-size: 4.5vmin;
-		opacity: 0.15;
-		z-index: 10;
-		margin-top: -5px;
-		margin-bottom: -3px;
-	}
-}
-
-#twitterFetcher_1 {
-	z-index: 50;
-}
-
-#twitterFetcher_1 ul li {
-	list-style-type: none;
-}
-
-.twitterFeed .tweet {
-	color: #555;
-	/*font-size: 3vmin;;*/
-}
-
-.twitterFeed .interact a {
-	font-size:2.8vmin;
-	padding: 2px 10px;
-	color: #999 !important;
-}
-
-.twitterFeed .interact a:hover {
-	color: #222 !important;
-}
-
-.twitterFeed .interact p {
-	padding: 10px;
-	font-size: 1vmin;
-}
-
-.twitterFeed .timePosted {
-	/*width:15%;*/
-	display: none;
-	/*font-size: 1.5em;*/
-}
-
-.twitterFeed .user {
-	clear:left;
-	display: none;
-}
-
-.twitterFeed .user a {
-	width: 100px;
-	display: none;
-}
-
-.twitterFeed .user span span {
-	width:100px;
-	/*display:block;*/
-	margin-top:10px;
-	display: none;
-}
-
-.twitterFeed .user img, .user a > span {
-	float:left;
-	display: none;
-}
-
-/*============== TOOL TIP ==============*/
+!*============== OLD TOOL TIP ==============*!
 
 .tooltip {
 	position: relative;
 	display: inline-block;
-	/*border-bottom: 1px dotted black;*/
+	!*border-bottom: 1px dotted black;*!
 }
 
 .tooltip .tooltiptext {
 	visibility: hidden;
-	/*width: auto;*/
+	!*width: auto;*!
 	width: 80px;
 	background-color: #555;
 	color: #fff;
@@ -792,6 +745,7 @@ h4 {
 	visibility: visible;
 	opacity: 1;
 }
+*/
 
 /*============== CAPTCHA ==============*/
 
@@ -831,117 +785,13 @@ h4 {
 	opacity: 1;
 }
 
-/* ===============================================================
- INSTAGRAM SWIPER CSS
- Basic Swiper Styles
- ================================================================*/
-#instafeedSwiper{
-	height: 160px;
-	overflow: hidden;
-	padding-top: 5px;
-	padding-bottom: 5px;
-	/*z-index: 50;*/
-}
-
-#instafeedWrapper {
-
-}
-
-#instafeed .swiper-slide img {
-	/*border: solid black 2px;*/
-	-moz-box-shadow:5px 5px 5px rgba(0,0,0,0.3);
-	-webkit-box-shadow:5px 5px 5px rgba(0,0,0,0.3);
-	box-shadow:5px 5px 5px rgba(0,0,0,0.3);
-}
-
-.swiperContainer {
-
-	width: 100%;
-	position: relative;
-	overflow: hidden;
-	-webkit-backface-visibility: hidden;
-	-moz-backface-visibility: hidden;
-	-ms-backface-visibility: hidden;
-	-o-backface-visibility: hidden;
-	z-index: 1;
-	/*backface-visibility: hidden;*/
-	/* Fix of Webkit flickering */
-	/*margin: 10px 0px;*/
-	/*padding: 10px 0px;*/
-	/*margin: 0 auto;*/
-
-}
-
-.instafeed-swiper-container {
-	background-color: rgba(230,230,230,0.7);
-	width: 100%;
-	height: 170px;
-	/*margin: 10px 0px;*/
-	/*margin: 0 auto;*/
-	position: relative;
-	overflow: hidden;
-	-webkit-backface-visibility: hidden;
-	-moz-backface-visibility: hidden;
-	-ms-backface-visibility: hidden;
-	-o-backface-visibility: hidden;
-	/*backface-visibility: hidden;*/
-	/* Fix of Webkit flickering */
-	z-index: 1;
-}
-
-.swiper-wrapper {
-	position: relative;
-	width: 100%;
-	-webkit-transition-property: -webkit-transform, left, top;
-	-webkit-transition-duration: 0s;
-	-webkit-transform: translate3d(0px,0,0);
-	-webkit-transition-timing-function: ease;
-	-moz-transition-property: -moz-transform, left, top;
-	-moz-transition-duration: 0s;
-	-moz-transform: translate3d(0px,0,0);
-	-moz-transition-timing-function: ease;
-	-o-transition-property: -o-transform, left, top;
-	-o-transition-duration: 0s;
-	-o-transform: translate3d(0px,0,0);
-	-o-transition-timing-function: ease;
-	-o-transform: translate(0px,0px);
-	-ms-transition-property: -ms-transform, left, top;
-	-ms-transition-duration: 0s;
-	-ms-transform: translate3d(0px,0,0);
-	-ms-transition-timing-function: ease;
-	transition-property: transform, left, top;
-	transition-duration: 0s;
-	transform: translate3d(0px,0,0);
-	transition-timing-function: ease;
-	-webkit-box-sizing: content-box;
-	-moz-box-sizing: content-box;
-	box-sizing: content-box;
-}
-
-.swiper-free-mode > .swiper-wrapper {
-	-webkit-transition-timing-function: ease-out;
-	-moz-transition-timing-function: ease-out;
-	-ms-transition-timing-function: ease-out;
-	-o-transition-timing-function: ease-out;
-	transition-timing-function: ease-out;
-	margin: 0 auto;
-}
-
-/* IE10 Windows Phone 8 Fixes */
-.swiper-wp8-horizontal {
-	-ms-touch-action: pan-y;
-}
-.swiper-wp8-vertical {
-	-ms-touch-action: pan-x;
-}
-
 /* ===================== SC SWIPER ====================== */
 
 .soundcloudPlayer {
 	padding: 5px;
 	/*position: relative;*/
 	opacity: 0.90;
-    
+
 }
 
 .soundcloudPlayer iframe {
@@ -1037,222 +887,3 @@ h4 {
 
 }
 
-/* ===============================================================
- END INSTAGRAM SWIPER CSS
- ================================================================*/
-
-
-/*=============================================
-START lightbox.css
-===============================================*/
-
-/* Preload images */
-body:after {
-	content: url(../img/close.png) url(../img/loading.gif) url(../img/prev.png) url(../img/next.png);
-	display: none;
-}
-
-.lightboxOverlay {
-	position: absolute;
-	top: 0;
-	left: 0;
-	z-index: 9999;
-	background-color: black;
-	filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=80);
-	opacity: 0.8;
-	display: none;
-}
-
-.lightbox {
-	position: absolute;
-	left: 0;
-	width: 100%;
-	z-index: 10000;
-	text-align: center;
-	line-height: 0;
-	font-weight: normal;
-}
-
-.lightbox .lb-image {
-	display: block;
-	height: auto;
-	max-width: inherit;
-	-webkit-border-radius: 3px;
-	-moz-border-radius: 3px;
-	-ms-border-radius: 3px;
-	-o-border-radius: 3px;
-	border-radius: 3px;
-}
-
-.lightbox a img {
-	border: none;
-}
-
-.lb-outerContainer {
-	position: relative;
-	background-color: white;
-	*zoom: 1;
-	width: 250px;
-	height: 250px;
-	margin: 0 auto;
-	-webkit-border-radius: 4px;
-	-moz-border-radius: 4px;
-	-ms-border-radius: 4px;
-	-o-border-radius: 4px;
-	border-radius: 4px;
-}
-
-.lb-outerContainer:after {
-	content: "";
-	display: table;
-	clear: both;
-}
-
-.lb-container {
-	padding: 4px;
-}
-
-.lb-loader {
-	position: absolute;
-	top: 43%;
-	left: 0;
-	height: 25%;
-	width: 100%;
-	text-align: center;
-	line-height: 0;
-}
-
-.lb-cancel {
-	display: block;
-	width: 32px;
-	height: 32px;
-	margin: 0 auto;
-	background: url(../img/loading.gif) no-repeat;
-}
-
-.lb-nav {
-	position: absolute;
-	top: 0;
-	left: 0;
-	height: 100%;
-	width: 100%;
-	z-index: 10;
-}
-
-.lb-container > .nav {
-	left: 0;
-}
-
-.lb-nav a {
-	outline: none;
-	background-image: url('data:image/gif;base64,R0lGODlhAQABAPAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==');
-}
-
-.lb-prev, .lb-next {
-	height: 100%;
-	cursor: pointer;
-	display: block;
-}
-
-.lb-nav a.lb-prev {
-	width: 34%;
-	left: 0;
-	float: left;
-	background: url(../img/prev.png) left 48% no-repeat;
-	filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
-	opacity: 0;
-	-webkit-transition: opacity 0.6s;
-	-moz-transition: opacity 0.6s;
-	-o-transition: opacity 0.6s;
-	transition: opacity 0.6s;
-}
-
-.lb-nav a.lb-prev:hover {
-	filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
-	opacity: 1;
-}
-
-.lb-nav a.lb-next {
-	width: 64%;
-	right: 0;
-	float: right;
-	background: url(../img/next.png) right 48% no-repeat;
-	filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
-	opacity: 0;
-	-webkit-transition: opacity 0.6s;
-	-moz-transition: opacity 0.6s;
-	-o-transition: opacity 0.6s;
-	transition: opacity 0.6s;
-}
-
-.lb-nav a.lb-next:hover {
-	filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
-	opacity: 1;
-}
-
-.lb-dataContainer {
-	margin: 0 auto;
-	padding-top: 5px;
-	*zoom: 1;
-	width: 100%;
-	-moz-border-radius-bottomleft: 4px;
-	-webkit-border-bottom-left-radius: 4px;
-	border-bottom-left-radius: 4px;
-	-moz-border-radius-bottomright: 4px;
-	-webkit-border-bottom-right-radius: 4px;
-	border-bottom-right-radius: 4px;
-}
-
-.lb-dataContainer:after {
-	content: "";
-	display: table;
-	clear: both;
-}
-
-.lb-data {
-	padding: 0 4px;
-	color: #ccc;
-}
-
-.lb-data .lb-details {
-	width: 85%;
-	float: left;
-	text-align: left;
-	line-height: 1.1em;
-}
-
-.lb-data .lb-caption {
-	font-size: 13px;
-	font-weight: bold;
-	line-height: 1em;
-}
-
-.lb-data .lb-number {
-	display: block;
-	clear: left;
-	padding-bottom: 1em;
-	font-size: 12px;
-	color: #999999;
-}
-
-.lb-data .lb-close {
-	display: block;
-	float: right;
-	width: 30px;
-	height: 30px;
-	background: url(../img/close.png) top right no-repeat;
-	text-align: right;
-	outline: none;
-	filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=70);
-	opacity: 0.7;
-	-webkit-transition: opacity 0.2s;
-	-moz-transition: opacity 0.2s;
-	-o-transition: opacity 0.2s;
-	transition: opacity 0.2s;
-}
-
-.lb-data .lb-close:hover {
-	cursor: pointer;
-	filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
-	opacity: 1;
-}

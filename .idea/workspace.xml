@@ -4,19 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3d6dd1b8-6054-4f8d-bd97-3aa210cb5ff2" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/portal/README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/portal/config.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/portal/hud.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/portal/index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/portal/media/excite_money/audio.mp3" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/portal/media/excite_money/cover.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/portal/media/excite_money/ghost.mov" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/portal/media/excite_money/hype.mp3" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/portal/media/excite_money/sting.mp3" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/portal/script.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/portal/style.css" afterDir="false" />
+    <list default="true" id="3d6dd1b8-6054-4f8d-bd97-3aa210cb5ff2" name="Default" comment="Separate data from logic by creating config.json and changing init in sasa.js">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config.json" beforeDir="false" afterPath="$PROJECT_DIR$/config.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/css/sasa.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/sasa.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/sasa.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/sasa.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -36,21 +29,21 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
-  "lastFilter": {
-    "state": "OPEN",
-    "assignee": "SasaRA"
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;SasaRA&quot;
   }
-}]]></component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/SasaRA/sasara.github.io.git",
-    "accountId": "d8fa37d2-35b7-4618-b573-55036efe5ecd"
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/SasaRA/sasara.github.io.git&quot;,
+    &quot;accountId&quot;: &quot;d8fa37d2-35b7-4618-b573-55036efe5ecd&quot;
   }
-}]]></component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 6
-}]]></component>
+}</component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 6
+}</component>
   <component name="ProjectId" id="1g851khx1ddaSonz1qQVQ2NyP8F" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -62,13 +55,16 @@
     "JavaScript Debug.index.html.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
+    "com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1": "true",
     "git-widget-placeholder": "master",
+    "junie.onboarding.icon.badge.shown": "true",
     "last_opened_file_path": "/Users/ra/Library/CloudStorage/Dropbox/_DEV/sasara.me/sasara.github.io/portal/media/excite_money",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
+    "to.speed.mode.migration.done": "true",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -127,10 +123,24 @@
       <workItem from="1599398525870" duration="66000" />
       <workItem from="1648201761742" duration="44000" />
       <workItem from="1768263508321" duration="11098000" />
+      <workItem from="1768707084033" duration="11182000" />
     </task>
+    <task id="LOCAL-00001" summary="Separate data from logic by creating config.json and changing init in sasa.js">
+      <option name="closed" value="true" />
+      <created>1768716497988</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1768716497988</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Separate data from logic by creating config.json and changing init in sasa.js" />
+    <option name="LAST_COMMIT_MESSAGE" value="Separate data from logic by creating config.json and changing init in sasa.js" />
   </component>
 </project>

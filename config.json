@@ -15,24 +15,21 @@
     "YOU ARE LOVED"
   ],
   "social": [
-    "soundcloud",
-    "x",
-    "instagram",
-    "youtube",
-    "facebook",
-    "linkedin",
-    "github",
-    "codepen",
-    "paypal"
+    { "id": "soundcloud", "icon": "fa-brands fa-soundcloud" },
+    { "id": "x", "icon": "fa-brands fa-x-twitter" },
+    { "id": "instagram", "icon": "fa-brands fa-instagram" },
+    { "id": "youtube", "icon": "fa-brands fa-youtube" },
+    { "id": "facebook", "icon": "fa-brands fa-facebook-f" },
+    { "id": "linkedin", "icon": "fa-brands fa-linkedin-in" },
+    { "id": "github", "icon": "fa-brands fa-github" },
+    { "id": "codepen", "icon": "fa-brands fa-codepen" },
+    { "id": "paypal", "icon": "fa-brands fa-paypal" }
   ],
-  "social-off": [
-    "patreon",
-    "reverbnation",
-    "plus",
-    "medium",
-    "parler"
+  "social_OFF": [
+    { "id": "patreon", "icon": "fa-brands fa-patreon" },
+    { "id": "reverbnation", "icon": "fa-solid fa-square-rss" },
+    { "id": "medium", "icon": "fa-brands fa-medium" }
   ],
-
   "audio": {
     "focus": "1238406343",
     "contract": "572970957",

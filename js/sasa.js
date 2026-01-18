@@ -5,7 +5,7 @@
 
 var $debug = false,
     $firstTime = true;
-$playIntro = true;
+    $playIntro = true;
 
 var $defaultEase = "Expo.easeOut";
 
@@ -356,37 +356,44 @@ function loadSocial(s) {
 
     var tip = false;
     var toolTip = '';
+    var str = '';
 
-    str = '';
+    for (var i = 0; i < s.length; i++) {
+        var item = s[i]; // This is now an object {id: "...", icon: "..."}
 
-    for (i = 0; i < s.length; i++) {
-        linkName = ('$link_' + s[i]);
-        linkNumber = ('$link_' + s[i]);
         if(tip === true) {
-            toolTip = ('<span class="tooltiptext">' + s[i] + '</span>');
+            toolTip = ('<span class="tooltiptext">' + item.id + '</span>');
         } else {
             toolTip = '';
         }
-        str += ('<a ' + 'id="' + 'link_' + s[i] + '"' + ' class="link ' + 'link_'+ i + ' ' + s[i] + ' tooltip" title="' + s[i] + '" href="http://' + s[i] + '.sasara.me" target="_blank">' + toolTip + '</a>');
+
+        // We use item.id for the URL and item.icon for the FontAwesome class
+        str += '<a id="link_' + item.id + '" ' +
+            'class="link link_' + i + ' ' + item.id + ' tooltip" ' +
+            'title="' + item.id + '" ' +
+            'href="http://' + item.id + '.sasara.me" target="_blank">' +
+            '<i class="' + item.icon + '"></i>' + // Injected FA Icon
+            toolTip +
+            '</a>';
     }
+
+    // Keep your mail link logic at the end
+    var mailIcon = '<i class="fa-regular fa-envelope"></i>';
     if(tip === true) {
-        str += ('<a id="link_mail" class="link mail tooltip" title="email" href="mailto:ra@souljah.com?subject=Mail from SasaRA.me" target="_blank"><span class="tooltiptext">' + 'email' + '</span></a>');
+        str += '<a id="link_mail" class="link mail tooltip" title="email" href="mailto:ra@souljah.com?subject=Mail from SasaRA.me" target="_blank">' + mailIcon + '<span class="tooltiptext">email</span></a>';
     } else {
-        str += ('<a id="link_mail" class="link mail tooltip" title="email" href="mailto:ra@souljah.com?subject=Mail from SasaRA.me" target="_blank"></a>');
+        str += '<a id="link_mail" class="link mail tooltip" title="email" href="mailto:ra@souljah.com?subject=Mail from SasaRA.me" target="_blank">' + mailIcon + '</a>';
     }
 
     GSAP.insertHTML($socialLogos, str);
 
-    // ADD LISTENERS
-    aTags = document.getElementsByClassName('link');
-    for (var i=0;i<aTags.length;i++){
-        addEventListener.call(aTags[i],'mouseover',socialLinkOver);
-        addEventListener.call(aTags[i],'mouseout',socialLinkOut);
+    // Re-bind listeners for GSAP hover effects
+    var aTags = document.getElementsByClassName('link');
+    for (var j = 0; j < aTags.length; j++){
+        aTags[j].addEventListener('mouseover', socialLinkOver);
+        aTags[j].addEventListener('mouseout', socialLinkOut);
     }
-
-    // loadSocialLogos();
 }
-
 function socialLinkOver(l) {
     // trace('mouseover');
     TweenMax.to(this,0.1,{scale:1.2});
