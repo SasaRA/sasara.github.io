@@ -1,0 +1,41 @@
+{
+  "settings": {
+    "debug": false,
+    "playIntro": true
+  },
+  "messages": [
+    "LOVE REIGNS SUPREME",
+    "EVERY DAY IS A BLESSING",
+    "LOVE GOD & LIVE",
+    "SHINE BRIGHT",
+    "HEARTCORE 4 LIFE",
+    "LISTEN TO LIFE",
+    "UNITY = STRENGTH",
+    "KEEP SMILING",
+    "YOU ARE LOVED"
+  ],
+  "social": [
+    "soundcloud",
+    "x",
+    "instagram",
+    "youtube",
+    "facebook",
+    "linkedin",
+    "github",
+    "codepen",
+    "paypal"
+  ],
+  "social-off": [
+    "patreon",
+    "reverbnation",
+    "plus",
+    "medium",
+    "parler"
+  ],
+
+  "audio": {
+    "focus": "1238406343",
+    "contract": "572970957",
+    "playlist": "3416309"
+  }
+}
