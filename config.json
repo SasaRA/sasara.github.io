@@ -16,16 +16,21 @@
   ],
   "social": [
     { "id": "soundcloud", "icon": "fa-brands fa-soundcloud" },
-    { "id": "x", "icon": "fa-brands fa-x-twitter" },
+    { "id": "spotify", "icon": "fa-brands fa-spotify" },
+    { "id": "apple", "icon": "fa-brands fa-apple" },
+    { "id": "bandcamp", "icon": "fa-brands fa-bandcamp" },
     { "id": "instagram", "icon": "fa-brands fa-instagram" },
     { "id": "youtube", "icon": "fa-brands fa-youtube" },
+    { "id": "x", "icon": "fa-brands fa-x-twitter" },
     { "id": "facebook", "icon": "fa-brands fa-facebook-f" },
-    { "id": "linkedin", "icon": "fa-brands fa-linkedin-in" },
-    { "id": "github", "icon": "fa-brands fa-github" },
-    { "id": "codepen", "icon": "fa-brands fa-codepen" },
-    { "id": "paypal", "icon": "fa-brands fa-paypal" }
+    { "id": "pay", "icon": "fa-solid fa-dollar-sign" }
   ],
   "social_OFF": [
+    { "id": "amazon", "icon": "fa-brands fa-amazon" },
+    { "id": "linkedin", "icon": "fa-brands fa-linkedin-in" },
+    { "id": "codepen", "icon": "fa-brands fa-codepen" },
+    { "id": "github", "icon": "fa-brands fa-github" },
+    { "id": "paypal", "icon": "fa-brands fa-paypal" },
     { "id": "patreon", "icon": "fa-brands fa-patreon" },
     { "id": "medium", "icon": "fa-brands fa-medium" }
   ],

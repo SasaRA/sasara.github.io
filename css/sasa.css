@@ -202,6 +202,16 @@ h4 { font-size: 1.5vmin; }
 .link:hover { background-color: #c6c6c6; }
 .link:hover i { color: #000; }
 
+/* Target only the pay link icon to make it extra chunky */
+.link.pay i {
+    -webkit-text-stroke: 1px #c6c6c6; /* Adds a 1px border in the same color */
+}
+
+/* Ensure the stroke color changes on hover too */
+.link.pay:hover i {
+    -webkit-text-stroke: 1px #000;
+}
+
 /* Tooltips */
 .tooltip .tooltiptext {
     visibility: hidden;

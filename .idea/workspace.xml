@@ -4,76 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3d6dd1b8-6054-4f8d-bd97-3aa210cb5ff2" name="Default" comment="refactor: strip Twitter Fetcher and purge legacy CSS&#10;&#10;sasa.js: Removed TwitterFetcher library reference, config objects, and timeline logic.&#10;&#10;index.html: Removed the twitterFeed and twitterFetcher_1 DOM elements.&#10;&#10;sasa.css: Purged legacy .link.twitter background-image classes and twitter-specific layout styles.">
+    <list default="true" id="3d6dd1b8-6054-4f8d-bd97-3aa210cb5ff2" name="Default" comment="Delete images/links folder and all old icon images.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/links/icon_codepen.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/links/icon_facebook.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/links/icon_github.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/links/icon_instagram.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/links/icon_linkedin.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/links/icon_mail.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/links/icon_medium.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/links/icon_parler.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/links/icon_patreon.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/links/icon_paypal.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/links/icon_pinterest.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/links/icon_plus.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/links/icon_reverbnation.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/links/icon_soundcloud.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/links/icon_tumblr.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/links/icon_twitter.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/links/icon_x.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/links/icon_x.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/links/icon_youtube.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/links/optimized/HeartCore_Media_160x88.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/links/optimized/Sasa_200x20.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/links/optimized/icon_codepen.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/links/optimized/icon_facebook.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/links/optimized/icon_github.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/links/optimized/icon_instagram.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/links/optimized/icon_linkedin.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/links/optimized/icon_mail.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/links/optimized/icon_medium.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/links/optimized/icon_patreon.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/links/optimized/icon_patreon_old.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/links/optimized/icon_plus.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/links/optimized/icon_reverbnation.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/links/optimized/icon_soundcloud.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/links/optimized/icon_twitter.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/links/optimized/icon_youtube.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/links/originals/icon_apple.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/links/originals/icon_codepen.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/links/originals/icon_facebook.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/links/originals/icon_github.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/links/originals/icon_grooveshark.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/links/originals/icon_instagram.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/links/originals/icon_linkedin.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/links/originals/icon_mail.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/links/originals/icon_medium.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/links/originals/icon_myspace.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/links/originals/icon_patreon.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/links/originals/icon_patreon_old.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/links/originals/icon_paypal.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/links/originals/icon_pinterest.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/links/originals/icon_plus.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/links/originals/icon_reverbnation.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/links/originals/icon_soundcloud.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/links/originals/icon_tumblr.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/links/originals/icon_twitter.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/links/originals/icon_x.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/links/originals/icon_youtube.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/links/svg/codepen.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/links/svg/facebook.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/links/svg/github.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/links/svg/instagram.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/links/svg/linkedin.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/links/svg/mail.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/links/svg/medium.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/links/svg/plus.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/links/svg/reverbnation.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/links/svg/soundcloud.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/links/svg/twitter.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/links/svg/youtube.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/config.json" beforeDir="false" afterPath="$PROJECT_DIR$/config.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/css/sasa.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/sasa.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/sasa.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/sasa.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -187,7 +122,7 @@
       <workItem from="1599398525870" duration="66000" />
       <workItem from="1648201761742" duration="44000" />
       <workItem from="1768263508321" duration="11098000" />
-      <workItem from="1768707084033" duration="19813000" />
+      <workItem from="1768707084033" duration="23948000" />
     </task>
     <task id="LOCAL-00001" summary="Separate data from logic by creating config.json and changing init in sasa.js">
       <option name="closed" value="true" />
@@ -213,7 +148,15 @@
       <option name="project" value="LOCAL" />
       <updated>1768762646762</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Delete images/links folder and all old icon images.">
+      <option name="closed" value="true" />
+      <created>1768765321839</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1768765321839</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -223,6 +166,7 @@
     <MESSAGE value="Separate data from logic by creating config.json and changing init in sasa.js" />
     <MESSAGE value="Implement modernized socialLogos by using FontAwesome. Got rid of extra css for twitterFetch, scSwiper and lightBox etc." />
     <MESSAGE value="refactor: strip Twitter Fetcher and purge legacy CSS&#10;&#10;sasa.js: Removed TwitterFetcher library reference, config objects, and timeline logic.&#10;&#10;index.html: Removed the twitterFeed and twitterFetcher_1 DOM elements.&#10;&#10;sasa.css: Purged legacy .link.twitter background-image classes and twitter-specific layout styles." />
-    <option name="LAST_COMMIT_MESSAGE" value="refactor: strip Twitter Fetcher and purge legacy CSS&#10;&#10;sasa.js: Removed TwitterFetcher library reference, config objects, and timeline logic.&#10;&#10;index.html: Removed the twitterFeed and twitterFetcher_1 DOM elements.&#10;&#10;sasa.css: Purged legacy .link.twitter background-image classes and twitter-specific layout styles." />
+    <MESSAGE value="Delete images/links folder and all old icon images." />
+    <option name="LAST_COMMIT_MESSAGE" value="Delete images/links folder and all old icon images." />
   </component>
 </project>
