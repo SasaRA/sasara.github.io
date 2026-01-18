@@ -27,7 +27,6 @@
   ],
   "social_OFF": [
     { "id": "patreon", "icon": "fa-brands fa-patreon" },
-    { "id": "reverbnation", "icon": "fa-solid fa-square-rss" },
     { "id": "medium", "icon": "fa-brands fa-medium" }
   ],
   "audio": {

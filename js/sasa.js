@@ -2,10 +2,9 @@
 // GLOBAL VARIABLES START
 //////////////////////////
 
-
 var $debug = false,
     $firstTime = true;
-    $playIntro = true;
+$playIntro = true;
 
 var $defaultEase = "Expo.easeOut";
 
@@ -19,7 +18,6 @@ var $sasaMessageList = [];
 
 var $jsLinks = [
     'js/TweenMax.min.js'
-    ,'js/twitterFetcher_min.js'
     // ,'js/scrollreveal.min.js'
 ];
 
@@ -34,7 +32,6 @@ var $mainStage = document.getElementById('mainStage'),
     $socialLogos = document.getElementById('socialLogos'),
     $sasaMessage = document.getElementById('sasaMessage'),
     $sasaMsg = document.getElementById('sasaMsg'),
-    $twitterFeed = document.getElementById('twitterFeed'),
     $instafeedSwiper = document.getElementById('instafeedSwiper'),
     $scPlayer = document.getElementById('scPlayer'),
     $soundcloudPlayer = document.getElementsByClassName('soundcloudPlayer'),
@@ -49,49 +46,17 @@ var $nimaiOverlay = document.getElementById('nimaiOverlay'),
     $sasaFooterCredit = document.getElementsByClassName('sasaFooterCredit'),
     $nimEye = document.getElementById('nimEye');
 
-var $socialList = [
-    // *** email link is auto added on load *** //
-];
-
+var $socialList = [];
 var $socialArray = [];
 
-var $link = document.getElementsByClassName('link'),
-    $link_soundcloud = document.getElementsByClassName('soundcloud'),
-    $link_patreon = document.getElementsByClassName('patreon'),
-    $link_reverbnation = document.getElementsByClassName('reverbnation'),
-    $link_youtube = document.getElementsByClassName('youtube'),
-    $link_facebook = document.getElementsByClassName('facebook'),
-    $link_twitter = document.getElementsByClassName('twitter'),
-    $link_x = document.getElementsByClassName('x'),
-    $link_instagram = document.getElementsByClassName('instagram'),
-    $link_plus = document.getElementsByClassName('plus'),
-    $link_medium = document.getElementsByClassName('medium'),
-    $link_linkedin = document.getElementsByClassName('linkedin'),
-    $link_github = document.getElementsByClassName('github'),
-    $link_codepen = document.getElementsByClassName('codepen'),
-    $link_parler = document.getElementsByClassName('parler'),
-    $link_mail = document.getElementsByClassName('mail');
+var $link = document.getElementsByClassName('link');
 
 var $sasaBgImage = document.getElementById("sasaBgImage");
-var $BgImage1 = "images/bg/SasaRA_BG_Photo_1.png";
-var $BgImage2 = "images/bg/SasaRA_BG_Photo_2.png";
-var $BgImage3 = "images/bg/SasaRA_BG_Photo_3.png";
-var $BgImage4 = "images/bg/SasaRA_BG_Photo_4.png";
-var $BgImage5 = "images/bg/SasaRA_BG_Photo_5.png";
-var $BgImage6 = "images/bg/SasaRA_BG_Photo_6.png";
 
 var $docHeight,
     $docWidth,
     $docCenterH,
     $docCenterW;
-
-var $tfConfig = {
-    "id": '464304692680335360',
-    "domId": 'twitterFetcher_1',
-    "maxTweets": 1,
-    "enableLinks": true,
-    "showPermalinks": false
-};
 
 var backstretchImages = [
     "images/bg/SasaRA_BG_Photo_1.png",
@@ -99,12 +64,10 @@ var backstretchImages = [
     "images/bg/SasaRA_BG_Photo_3.png",
     "images/bg/SasaRA_BG_Photo_4.png"];
 
-
 /////////////////////////
 // GLOBAL VARIABLES END
 /////////////////////////
 
-// trace for consistent console logging
 function trace(value) {
     if ($debug === true) {
         console.log('<<< ', value, ' >>>')
@@ -117,14 +80,10 @@ function init() {
     fetch('config.json')
         .then(function(response) { return response.json(); })
         .then(function(data) {
-            // Assign JSON data to global variables
             $debug = data.settings.debug;
             $playIntro = data.settings.playIntro;
             $sasaMessageList = data.messages;
             $socialList = data.social;
-
-            // Reconstruct SoundCloud iframes with JSON IDs if needed
-            // For now, keeping your original iframe strings and proceeding
 
             loadJS($jsLinks);
             loadSasaMessage();
@@ -137,17 +96,12 @@ function init() {
 
 function start() {
     trace('start');
-    // preloadTwitterFetcher($tfConfig);
     buildMainTL(0.5,1.8);
     loadListeners();
-
-
-    // slideShow("intro-bg",10,1.3,1.0,0);
 }
 
 function buildMainTL(d,t) {
     TweenLite.defaultEase = Sine.easeOut;
-
     $mainTL = new TimelineLite({paused:true});
 
     $mainTL
@@ -156,12 +110,7 @@ function buildMainTL(d,t) {
         .add(loadSasaMsgTL(), 'sasaMsg')
         .add(loadHeadFootTL(), 'headFoot')
         .add(loadSocialTL(0.7), 'social')
-        // .add(showAllGlories(), '+=2')
-        // .add(showNimaiCredits(), '+=2.5')
-        // .add(loadTwitterTL(0.3), 'twitter')
-        // .add(loadTwitterTL(0.3), '+=2')
         .call(mainStagerize,[],this,'+=2')
-
     ;
 
     if ($playIntro === true) {
@@ -169,30 +118,22 @@ function buildMainTL(d,t) {
     } else {
         $mainTL.play('headFoot');
     }
-
 }
 
 function loadSasaMessage() {
     trace('loadSasaMessage INIT');
-
-    msgNumber = Math.floor(Math.random() * $sasaMessageList.length); // Random Index position in the array
+    msgNumber = Math.floor(Math.random() * $sasaMessageList.length);
     GSAP.insertHTML($sasaMsg, $sasaMessageList[msgNumber]);
     GSAP.insertHTML($sasaMessage, $sasaMessageList[msgNumber]);
-    // playSasaMessage(1);
 }
 
 function loadListeners() {
     $sasaLogo.addEventListener("click", mainStagerize);
-    // $sasaLogo.addEventListener("mouseover", socialize);
-    // $heartcoreLogo.addEventListener("mouseover", twitterize);
-    // $heartcoreLogo.addEventListener("click", socialize);
 }
 
 function loadSasaMsgTL() {
     trace('loadSasaMsgTL INIT');
-
     tl = new TimelineLite();
-
     tl
         .set($sasaMessage, {className: '+=animate'})
         .set($nimaiOverlay, {className: '-=hidden'})
@@ -201,7 +142,6 @@ function loadSasaMsgTL() {
         .to($sasaMessage, 0.01, {xPercent: -50, yPercent: -50})
         .to($sasaMessage, 0.01, {left: "50%", top: "50%"})
         .to($sasaMessage, 0.5, {opacity: 1, scale: 1.5})
-        // .to($nimaiOverlay, 3, {zIndex: 1, opacity: 1})
         .to($sasaMessage, 1.2, {opacity: 0, scale: 0.6}, '+=2')
         .to($sasaMessage, 2, {top: '30%'}, '-=1.2')
         .to($nimaiOverlay, 1, {zIndex: 1, opacity: 0, onComplete: function() {
@@ -210,17 +150,13 @@ function loadSasaMsgTL() {
                 $sasaMessage.classList.add('hidden');
             }}, '-=1.2')
     ;
-
     return tl;
 }
 
 function loadHeadFootTL() {
     trace('loadHeadFootTL INIT');
-
     time = 0.3;
-
     tl = new TimelineLite();
-
     tl
         .set($nimaiOverlay, {className: '+=hidden'})
         .set($sasaMessage, {className: '+=hidden'})
@@ -240,23 +176,13 @@ function loadHeadFootTL() {
         .from($sasaLogo, time, {scale:0.3,y:-150},'hf_1')
         .from($heartcoreLogo, time, {scale:0.3,y:150},'hf_1')
         .addPause(2)
-    // .set($sasaLogo, {className: '-=sasaLogoIntro'})
-    // .set($sasaLogo, {className: '+=sasaLogo'})
-
     ;
-
-    // $sasaLogo.classList.remove("sasaLogoIntro");
-    // $sasaLogo.classList.add("sasaLogo");
-
     return tl;
-
 }
 
 function loadSocialTL(d) {
     trace('loadSocialTL INIT');
-
     $socialTL = new TimelineLite();
-
     $socialTL
         .delay(d)
         .set($socialLogos, {className: '-=hidden'})
@@ -268,211 +194,60 @@ function loadSocialTL(d) {
         .staggerTo($link,0.2,{scale:1.00}, -0.035)
         .addPause(2)
     ;
-
     return $socialTL;
-
-}
-
-function loadTwitterTL(d) {
-    trace('loadTwitterTL INIT');
-
-    tl = new TimelineLite();
-
-    tl
-        .delay(d)
-        .set($twitterFeed, {className: '-=hidden'})
-        .set($twitterFeed,{height:'auto'})
-        .from($twitterFeed,0.3,{height:0, opacity:0, scaleY:0.5})
-        .to($twitterFeed,0.2,{scale:1.1})
-        .to($twitterFeed,0.5,{scale:1.0})
-    ;
-
-    return tl;
-
 }
 
 function showAllGlories() {
-
     tl = new TimelineLite({paused:true});
-    tl
-        .from($AllGlories,1,{y:5},'+=0.25')
-    ;
+    tl.from($AllGlories,1,{y:5},'+=0.25');
     $AllGlories.classList.remove('hidden');
     tl.play();
 }
 
 function showNimaiCredits() {
-
     tl = new TimelineLite({paused:true});
-    tl
-        .staggerFrom($nimaiFooterCredit,1,{y:-5,opacity: 0},0.2,'-=0.5')
-    ;
+    tl.staggerFrom($nimaiFooterCredit,1,{y:-5,opacity: 0},0.2,'-=0.5');
     $nimaiFooterCredits.classList.remove('hidden');
     tl.play();
 }
-
-
-var socialize = once(function() {
-    loadSocial($socialList);
-});
-
-var twitterize = once(function() {
-    // preloadTwitterFetcher($tfConfig);
-    loadTwitterFetcher();
-});
 
 var mainStagerize = once(function() {
     loadMainStageContent();
 });
 
-var sasaMessageize = once(function() {
-    loadSasaMessage();
-});
-
-function linkCompress() {
-
-    // var link = document.getElementsByClassName('link')
-    $linkTL = new TimelineMax({paused:true,delay:0.2});
-
-    for (i=$link.length-1; i>=0; i--) {
-        // tl = new TimelineMax({delay:0.2});
-        $linkTL.to($link[i], 0.15, {x:-(i*41),opacity:0.5});
-    }
-
-    $linkTL.play();
-}
-
-function linkIn() {
-    $linkTL.reverse();
-}
-
-function linkOut() {
-    $linkTL.play();
-}
-
-
 function loadSocial(s) {
     trace('loadSocial LOADED');
-
     var tip = false;
     var toolTip = '';
     var str = '';
 
     for (var i = 0; i < s.length; i++) {
-        var item = s[i]; // This is now an object {id: "...", icon: "..."}
+        var item = s[i];
+        toolTip = (tip === true) ? '<span class="tooltiptext">' + item.id + '</span>' : '';
 
-        if(tip === true) {
-            toolTip = ('<span class="tooltiptext">' + item.id + '</span>');
-        } else {
-            toolTip = '';
-        }
-
-        // We use item.id for the URL and item.icon for the FontAwesome class
         str += '<a id="link_' + item.id + '" ' +
             'class="link link_' + i + ' ' + item.id + ' tooltip" ' +
             'title="' + item.id + '" ' +
             'href="http://' + item.id + '.sasara.me" target="_blank">' +
-            '<i class="' + item.icon + '"></i>' + // Injected FA Icon
+            '<i class="' + item.icon + '"></i>' +
             toolTip +
             '</a>';
     }
 
-    // Keep your mail link logic at the end
     var mailIcon = '<i class="fa-regular fa-envelope"></i>';
-    if(tip === true) {
-        str += '<a id="link_mail" class="link mail tooltip" title="email" href="mailto:ra@souljah.com?subject=Mail from SasaRA.me" target="_blank">' + mailIcon + '<span class="tooltiptext">email</span></a>';
-    } else {
-        str += '<a id="link_mail" class="link mail tooltip" title="email" href="mailto:ra@souljah.com?subject=Mail from SasaRA.me" target="_blank">' + mailIcon + '</a>';
-    }
+    str += '<a id="link_mail" class="link mail tooltip" title="email" href="mailto:ra@souljah.com?subject=Mail from SasaRA.me" target="_blank">' + mailIcon + (tip === true ? '<span class="tooltiptext">email</span>' : '') + '</a>';
 
     GSAP.insertHTML($socialLogos, str);
 
-    // Re-bind listeners for GSAP hover effects
     var aTags = document.getElementsByClassName('link');
     for (var j = 0; j < aTags.length; j++){
         aTags[j].addEventListener('mouseover', socialLinkOver);
         aTags[j].addEventListener('mouseout', socialLinkOut);
     }
 }
-function socialLinkOver(l) {
-    // trace('mouseover');
-    TweenMax.to(this,0.1,{scale:1.2});
-}
 
-function socialLinkOut() {
-    // trace('$link mouseout');
-    TweenMax.to(this,0.3,{scale:1.00});
-}
-
-function preloadTwitterFetcher(config) {
-    trace('preloadTwitterFetcher INIT');
-    twitterFetcher.fetch(config);
-}
-
-
-function loadStorePromo() {
-    trace('loadStorePromo INIT');
-    $storePromo.classList.remove('hidden');
-    GSAP.insertHTML($scTrackA, $scExciteMoneyIframe);
-    GSAP.insertHTML($scTrackB, $scWeBelieveIframe);
-}
-
-// ====================================
-//     FULL BACKGROUND SLIDE SHOW
-//     VANILLA JS & GSAP
-//     Example Call:
-//     slideShow("intro-bg",10,1.3,0.5,0);
-// ====================================
-
-
-var $slides;
-// var $slides = document.getElementsByClassName("intro-bg"); //slides
-var currentSlide = 0; //keep track on the current slide
-var stayTime; //time the slide stays
-var slideTime; //fade in / fade out time
-var alphaSet;
-
-function slideShow(slideClass,sTime,tTime,alpha,current) {
-    $slides = document.getElementsByClassName(slideClass); //slides
-    currentSlide = current; //keep track on the current slide
-    stayTime = sTime; //time the slide stays
-    slideTime = tTime; //fade in / fade out time
-    alphaSet = alpha;
-
-    TweenLite.set($slides, {autoAlpha:0, onComplete: function(){
-            TweenLite.to($slides[currentSlide],(slideTime*2), {autoAlpha:alphaSet});    //show first image
-            TweenLite.delayedCall(stayTime, nextSlide); //start the slideshow
-        }});    //hide all images
-
-}
-function nextSlide() {
-    TweenLite.to($slides[currentSlide], slideTime, {
-        autoAlpha: 0,
-        className: "-=bg-active"
-    }); //fade out the old slide
-    currentSlide = ++currentSlide % $slides.length; //find out which is the next slide
-    TweenLite.to($slides[currentSlide], slideTime, {
-        autoAlpha: alphaSet,
-        className: "+=bg-active"
-    }); //fade in the next slide
-    TweenLite.delayedCall(stayTime, nextSlide); //wait a couple of seconds before next slide
-}
-
-// ==========================================
-//     END FULL BACKGROUND SLIDE SHOW
-// ==========================================
-
-var $igBg01 = "https://instagram.fsnc1-4.fna.fbcdn.net/t51.2885-15/e35/17662439_342625969468558_7500373359771779072_n.jpg";
-var $igBg02 = "https://instagram.fsnc1-4.fna.fbcdn.net/t51.2885-15/e35/13355439_553003784901766_2013074610_n.jpg";
-
-function setBgImg(BgImageLink) {
-    trace('setBGimage = ' + BgImageLink);
-    TweenMax.to($sasaBgImage,0.2,{opacity:0,onComplete:function(){
-            $sasaBgImage.src = BgImageLink;
-            loadBgImg();
-        }});
-
-}
+function socialLinkOver() { TweenMax.to(this,0.1,{scale:1.2}); }
+function socialLinkOut() { TweenMax.to(this,0.3,{scale:1.00}); }
 
 function loadBgImg() {
     trace('loadBgImg INIT');
@@ -492,36 +267,11 @@ function loadMainStageContent() {
 
     $sasaLogo.classList.remove("sasaLogoIntro");
     $sasaLogo.classList.add("sasaLogo");
-
-    // $sasaMessage.classList.remove('animate');
     $sasaMessage.classList.remove('hidden');
-
     $mainStage.classList.remove('hidden');
     $mainContainer.classList.remove('centered');
 
-    // TweenMax.set($socialLogos,{height:'auto'});
-    // TweenMax.set($twitterFeed,{height:'auto'});
-    // loadTwitterFetcher($tfConfig);
     scLoadPlaylist($sc_focus);
-
-    // loadStorePromo();
-}
-
-function setMainStage() {
-    trace('setMainStage INIT');
-
-    var nimaiHeaderH = Math.round($nimaiHeader.scrollHeight);
-    var nimaiFooterH = Math.round($nimaiFooter.scrollHeight);
-    var nimaiHeadFoot = Math.round(nimaiHeaderH + nimaiFooterH);
-    var mainStageMinH = Math.round($docHeight - (nimaiHeadFoot + 25));
-
-    TweenMax.to($mainStage, 1.2, {minHeight: mainStageMinH});
-
-    // trace('nimaiHeadFoot = ' + nimaiHeadFoot);
-    // trace('nimaiHeaderH = ' + nimaiHeaderH);
-    // trace('nimaiFooterH = ' + nimaiFooterH);
-    // trace('setMainStage mainStageMinH = ' + mainStageMinH);
-
 }
 
 function scLoadPlaylist(playlist) {
@@ -530,25 +280,6 @@ function scLoadPlaylist(playlist) {
     GSAP.insertHTML($scPlayer, playlist);
     TweenMax.to(scPlaylist, 0.5, {height: 300});
 }
-
-function setDocSize() {
-    $docWidth = window.innerWidth
-        || document.documentElement.clientWidth
-        || document.body.clientWidth;
-
-    $docHeight = window.innerHeight
-        || document.documentElement.clientHeight
-        || document.body.clientHeight;
-
-    $docCenterW = Math.round($docWidth / 2);
-
-    $docCenterH = Math.round($docHeight / 2);
-}
-
-
-//======================================
-//========= CUSTOM FUNCTIONS =============
-//======================================
 
 function loadJS(link) {
     loadScripts(link,function(){
@@ -579,7 +310,6 @@ function loadScripts(array,callback){
 
 function once(fn, context) {
     var result;
-
     return function() {
         if(fn) {
             result = fn.apply(context || this, arguments);
@@ -589,102 +319,9 @@ function once(fn, context) {
     };
 }
 
-// Usage
-var canOnlyFireOnce = once(function() {
-    console.log('Fired!');
-});
-
-// canOnlyFireOnce(); // "Fired!"
-// canOnlyFireOnce(); // nada
-
-
-// ======================================
-
-
-
 var GSAP = {
-
-    gsapCenter: function (v, t) {
-        //trace('Center Height = ' + $docCenterH + 'px & Center Width = ' + $docCenterW + 'px');
-        TweenMax.set(v, t, {xPercent: -50, yPercent: -50});
-        TweenMax.set(v, t, {left: "50%", top: "50%"});
-    },
-
-    itemCenterX: function (item) {
-        var positionInfo = item.getBoundingClientRect();
-        var itemCenterX = Math.round(positionInfo.width / 2);
-        return itemCenterX;
-    },
-
-    itemCenterY: function (item) {
-        var positionInfo = item.getBoundingClientRect();
-        var itemCenterY = Math.round(positionInfo.height / 2);
-        return itemCenterY;
-    },
-
-    hideItem: function (domID) {
-        var item = domID.id;
-        trace(item + ' hideItem CALLED');
-        item.classList.add('hidden');
-        //document.getElementById('instafeedSwiper')
-    },
-
-    showItem: function (domID) {
-        var item = domID.id;
-        trace(item + ' showItem CALLED');
-        item.classList.remove('hidden');
-    },
-
     insertHTML: function (domID, htmlStr) {
         domID.insertAdjacentHTML('beforeend', htmlStr);
-        // trace(htmlStr + ' LOADED into DOM ID : ' + domID.id);
-    },
-
-    gsapScale: function (v, t, a) {
-        TweenMax.to(v, t, {scale: a});
-    },
-
-    gsapPosR: function (v, t, xPos, yPos) {
-        TweenMax.to(v, t, {x: xPos, y: yPos});
-    },
-
-    gsapPosA: function (v, t, xPos, yPos) {
-        var xPosA = ($docCenterW - xPos);
-        var yPosA = ($docCenterH - yPos);
-
-        TweenMax.to(v, t, {x: xPosA, y: yPosA});
-    },
-
-    gsapHeightWidth: function (v, t, h, w) {
-        TweenMax.to(v, t, {height: h, width: w});
-    },
-
-    gsapHeight: function (v, t, h) {
-        TweenMax.to(v, t, {height: h});
-    },
-
-    gsapMinHeight: function (v, t, h) {
-        TweenMax.to(v, t, {minHeight: h});
-    },
-
-    gsapWidth: function (v, t, w) {
-        TweenMax.to(v, t, {width: w});
-    },
-
-    gsapMove: function (v, t, x, y) {
-        TweenMax.to(v, t, {left: x, top: y});
-    },
-
-    gsapCenterH: function (v, t) {
-        //trace('Center Height = ' + $docCenterH + 'px & Center Width = ' + $docCenterW + 'px');
-        TweenMax.to(v, t, {xPercent: -50});
-        TweenMax.to(v, t, {left: "50%"});
-    },
-
-    gsapCenterV: function (v, t) {
-        //trace('Center Height = ' + $docCenterH + 'px & Center Width = ' + $docCenterW + 'px');
-        TweenMax.to(v, t, {yPercent: -50});
-        TweenMax.to(v, t, {top: "50%"});
     }
 };
 
