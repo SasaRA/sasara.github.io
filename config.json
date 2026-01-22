@@ -3,6 +3,40 @@
     "debug": false,
     "playIntro": true
   },
+  "animation": {
+    "global": {
+      "timeScale": 1.8,
+      "delay": 0.5,
+      "defaultEase": "Sine.easeOut"
+    },
+    "introMessage": {
+      "fadeIn": 0.5,
+      "hold": 2.0,
+      "fadeOut": 1.2,
+      "scaleIn": 1.5,
+      "scaleOut": 0.6
+    },
+    "logos": {
+      "duration": 0.3,
+      "scale": 0.3,
+      "yOffset": 150
+    },
+    "social": {
+      "delay": 0.7,
+      "duration": 0.3,
+      "stagger": 0.035,
+      "yOffset": 10
+    },
+    "hover": {
+      "speedIn": 0.1,
+      "speedOut": 0.3,
+      "scale": 1.2
+    },
+    "background": {
+      "duration": 0.7,
+      "scale": 1.03
+    }
+  },
   "messages": [
     "LOVE REIGNS SUPREME",
     "EVERY DAY IS A BLESSING",

@@ -4,10 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3d6dd1b8-6054-4f8d-bd97-3aa210cb5ff2" name="Default" comment="Delete images/links folder and all old icon images.">
+    <list default="true" id="3d6dd1b8-6054-4f8d-bd97-3aa210cb5ff2" name="Default" comment="Add spotify, bandcamp and apple music links to menu. Remove linkedin github and codepen from menu. Remove paypal from menu and add general pay link. Add custom css to make pay icon bolder by adding stroke">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/config.json" beforeDir="false" afterPath="$PROJECT_DIR$/config.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/css/sasa.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/sasa.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/js/sasa.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/sasa.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -122,7 +121,7 @@
       <workItem from="1599398525870" duration="66000" />
       <workItem from="1648201761742" duration="44000" />
       <workItem from="1768263508321" duration="11098000" />
-      <workItem from="1768707084033" duration="23948000" />
+      <workItem from="1768707084033" duration="29358000" />
     </task>
     <task id="LOCAL-00001" summary="Separate data from logic by creating config.json and changing init in sasa.js">
       <option name="closed" value="true" />
@@ -156,7 +155,15 @@
       <option name="project" value="LOCAL" />
       <updated>1768765321839</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Add spotify, bandcamp and apple music links to menu. Remove linkedin github and codepen from menu. Remove paypal from menu and add general pay link. Add custom css to make pay icon bolder by adding stroke">
+      <option name="closed" value="true" />
+      <created>1768769873511</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1768769873511</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -167,6 +174,7 @@
     <MESSAGE value="Implement modernized socialLogos by using FontAwesome. Got rid of extra css for twitterFetch, scSwiper and lightBox etc." />
     <MESSAGE value="refactor: strip Twitter Fetcher and purge legacy CSS&#10;&#10;sasa.js: Removed TwitterFetcher library reference, config objects, and timeline logic.&#10;&#10;index.html: Removed the twitterFeed and twitterFetcher_1 DOM elements.&#10;&#10;sasa.css: Purged legacy .link.twitter background-image classes and twitter-specific layout styles." />
     <MESSAGE value="Delete images/links folder and all old icon images." />
-    <option name="LAST_COMMIT_MESSAGE" value="Delete images/links folder and all old icon images." />
+    <MESSAGE value="Add spotify, bandcamp and apple music links to menu. Remove linkedin github and codepen from menu. Remove paypal from menu and add general pay link. Add custom css to make pay icon bolder by adding stroke" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add spotify, bandcamp and apple music links to menu. Remove linkedin github and codepen from menu. Remove paypal from menu and add general pay link. Add custom css to make pay icon bolder by adding stroke" />
   </component>
 </project>

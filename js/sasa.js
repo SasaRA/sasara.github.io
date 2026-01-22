@@ -3,8 +3,10 @@
 //////////////////////////
 
 var $debug = false,
-    $firstTime = true;
-$playIntro = true;
+    $firstTime = true,
+    $playIntro = true;
+
+var $anim = {}; // Global holder for all timing/scaling data from JSON
 
 var $defaultEase = "Expo.easeOut";
 
@@ -18,7 +20,6 @@ var $sasaMessageList = [];
 
 var $jsLinks = [
     'js/TweenMax.min.js'
-    // ,'js/scrollreveal.min.js'
 ];
 
 var $mainTL;
@@ -32,7 +33,6 @@ var $mainStage = document.getElementById('mainStage'),
     $socialLogos = document.getElementById('socialLogos'),
     $sasaMessage = document.getElementById('sasaMessage'),
     $sasaMsg = document.getElementById('sasaMsg'),
-    // $instafeedSwiper = document.getElementById('instafeedSwiper'),
     $scPlayer = document.getElementById('scPlayer'),
     $soundcloudPlayer = document.getElementsByClassName('soundcloudPlayer'),
     $heartcoreLogo = document.getElementById('heartcoreLogo');
@@ -85,6 +85,9 @@ function init() {
             $sasaMessageList = data.messages;
             $socialList = data.social;
 
+            // MAP ANIMATION DATA
+            $anim = data.animation;
+
             loadJS($jsLinks);
             loadSasaMessage();
             loadSocial($socialList);
@@ -96,7 +99,7 @@ function init() {
 
 function start() {
     trace('start');
-    buildMainTL(0.5,1.8);
+    buildMainTL($anim.global.delay, $anim.global.timeScale);
     loadListeners();
 }
 
@@ -109,7 +112,7 @@ function buildMainTL(d,t) {
         .timeScale(t)
         .add(loadSasaMsgTL(), 'sasaMsg')
         .add(loadHeadFootTL(), 'headFoot')
-        .add(loadSocialTL(0.7), 'social')
+        .add(loadSocialTL($anim.social.delay), 'social')
         .call(mainStagerize,[],this,'+=2')
     ;
 
@@ -141,21 +144,21 @@ function loadSasaMsgTL() {
         .to($sasaMessage, 0.01, {zIndex: 5100})
         .to($sasaMessage, 0.01, {xPercent: -50, yPercent: -50})
         .to($sasaMessage, 0.01, {left: "50%", top: "50%"})
-        .to($sasaMessage, 0.5, {opacity: 1, scale: 1.5})
-        .to($sasaMessage, 1.2, {opacity: 0, scale: 0.6}, '+=2')
-        .to($sasaMessage, 2, {top: '30%'}, '-=1.2')
+        .to($sasaMessage, $anim.introMessage.fadeIn, {opacity: 1, scale: $anim.introMessage.scaleIn})
+        .to($sasaMessage, $anim.introMessage.fadeOut, {opacity: 0, scale: $anim.introMessage.scaleOut}, '+=' + $anim.introMessage.hold)
+        .to($sasaMessage, 2, {top: '30%'}, '-=' + $anim.introMessage.fadeOut)
         .to($nimaiOverlay, 1, {zIndex: 1, opacity: 0, onComplete: function() {
                 TweenMax.set($sasaMessage, {clearProps: "all"});
                 $nimaiOverlay.classList.add('hidden');
                 $sasaMessage.classList.add('hidden');
-            }}, '-=1.2')
+            }}, '-=' + $anim.introMessage.fadeOut)
     ;
     return tl;
 }
 
 function loadHeadFootTL() {
     trace('loadHeadFootTL INIT');
-    time = 0.3;
+    time = $anim.logos.duration;
     tl = new TimelineLite();
     tl
         .set($nimaiOverlay, {className: '+=hidden'})
@@ -173,8 +176,8 @@ function loadHeadFootTL() {
         .add('hf_1',0.05)
         .to($sasaLogo, time, {opacity: 1}, 'hf_0')
         .to($heartcoreLogo, time, {opacity: 1}, 'hf_0')
-        .from($sasaLogo, time, {scale:0.3,y:-150},'hf_1')
-        .from($heartcoreLogo, time, {scale:0.3,y:150},'hf_1')
+        .from($sasaLogo, time, {scale: $anim.logos.scale, y: -$anim.logos.yOffset},'hf_1')
+        .from($heartcoreLogo, time, {scale: $anim.logos.scale, y: $anim.logos.yOffset},'hf_1')
         .addPause(2)
     ;
     return tl;
@@ -189,9 +192,9 @@ function loadSocialTL(d) {
         .set($link, {opacity: 1})
         .set($socialLogos,{height:0})
         .set($socialLogos,{height:'auto'})
-        .from($socialLogos,0.3,{height:0})
-        .staggerFrom($link, 0.2, {y: +10, opacity: 0}, 0.035)
-        .staggerTo($link,0.2,{scale:1.00}, -0.035)
+        .from($socialLogos, $anim.social.duration, {height:0})
+        .staggerFrom($link, $anim.social.duration, {y: $anim.social.yOffset, opacity: 0}, $anim.social.stagger)
+        .staggerTo($link, $anim.social.duration, {scale:1.00}, -$anim.social.stagger)
         .addPause(2)
     ;
     return $socialTL;
@@ -246,15 +249,15 @@ function loadSocial(s) {
     }
 }
 
-function socialLinkOver() { TweenMax.to(this,0.1,{scale:1.2}); }
-function socialLinkOut() { TweenMax.to(this,0.3,{scale:1.00}); }
+function socialLinkOver() { TweenMax.to(this, $anim.hover.speedIn, {scale: $anim.hover.scale}); }
+function socialLinkOut() { TweenMax.to(this, $anim.hover.speedOut, {scale: 1.00}); }
 
 function loadBgImg() {
     trace('loadBgImg INIT');
     tl = new TimelineLite({paused:true});
     tl
-        .set($sasaBgImage,{scale:1.03,opacity:0})
-        .to($sasaBgImage,0.7,{scale:1,opacity:1})
+        .set($sasaBgImage,{scale: $anim.background.scale, opacity:0})
+        .to($sasaBgImage, $anim.background.duration, {scale:1, opacity:1})
     ;
     $sasaBgImage.classList.remove('hidden');
     tl.play();
