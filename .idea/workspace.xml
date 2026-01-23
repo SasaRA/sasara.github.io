@@ -4,9 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3d6dd1b8-6054-4f8d-bd97-3aa210cb5ff2" name="Default" comment="Separate all hardcoded GSAP 2 animation from sasa.js and move them into config.json.">
+    <list default="true" id="3d6dd1b8-6054-4f8d-bd97-3aa210cb5ff2" name="Default" comment="refactor: modernize CSS architecture and implement variables&#10;&#10;Integrated CSS Variables for colors and transitions&#10;&#10;Applied box-sizing: border-box for layout stability&#10;&#10;Implemented clamp() for responsive typography&#10;&#10;Maintained legacy positioning for JS compatibility">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/css/sasa.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/sasa.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -120,7 +121,7 @@
       <workItem from="1599398525870" duration="66000" />
       <workItem from="1648201761742" duration="44000" />
       <workItem from="1768263508321" duration="11098000" />
-      <workItem from="1768707084033" duration="32351000" />
+      <workItem from="1768707084033" duration="34459000" />
     </task>
     <task id="LOCAL-00001" summary="Separate data from logic by creating config.json and changing init in sasa.js">
       <option name="closed" value="true" />
@@ -170,7 +171,15 @@
       <option name="project" value="LOCAL" />
       <updated>1769083322914</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="refactor: modernize CSS architecture and implement variables&#10;&#10;Integrated CSS Variables for colors and transitions&#10;&#10;Applied box-sizing: border-box for layout stability&#10;&#10;Implemented clamp() for responsive typography&#10;&#10;Maintained legacy positioning for JS compatibility">
+      <option name="closed" value="true" />
+      <created>1769151955848</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1769151955848</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -183,6 +192,7 @@
     <MESSAGE value="Delete images/links folder and all old icon images." />
     <MESSAGE value="Add spotify, bandcamp and apple music links to menu. Remove linkedin github and codepen from menu. Remove paypal from menu and add general pay link. Add custom css to make pay icon bolder by adding stroke" />
     <MESSAGE value="Separate all hardcoded GSAP 2 animation from sasa.js and move them into config.json." />
-    <option name="LAST_COMMIT_MESSAGE" value="Separate all hardcoded GSAP 2 animation from sasa.js and move them into config.json." />
+    <MESSAGE value="refactor: modernize CSS architecture and implement variables&#10;&#10;Integrated CSS Variables for colors and transitions&#10;&#10;Applied box-sizing: border-box for layout stability&#10;&#10;Implemented clamp() for responsive typography&#10;&#10;Maintained legacy positioning for JS compatibility" />
+    <option name="LAST_COMMIT_MESSAGE" value="refactor: modernize CSS architecture and implement variables&#10;&#10;Integrated CSS Variables for colors and transitions&#10;&#10;Applied box-sizing: border-box for layout stability&#10;&#10;Implemented clamp() for responsive typography&#10;&#10;Maintained legacy positioning for JS compatibility" />
   </component>
 </project>

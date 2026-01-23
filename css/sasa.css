@@ -1,22 +1,21 @@
 /*====================================*/
-/* 1. VARIABLES & MODERN RESET        */
+/* 1. VARIABLES & RESET               */
 /*====================================*/
 :root {
     --accent-blue: #10247e;
     --gray-light: #c6c6c6;
     --white-alpha: rgba(255, 255, 255, 0.4);
-    --transition-standard: all 0.25s ease;
-    --font-main: 'Roboto Condensed', sans-serif;
+    --transition-fast: all 0.2s ease;
 }
 
 * {
     margin: 0;
     padding: 0;
-    box-sizing: border-box; /* Ensures padding doesn't break layout width */
+    box-sizing: border-box;
 }
 
 body {
-    font-family: var(--font-main);
+    font-family: 'Roboto Condensed', sans-serif;
     line-height: 1.2;
     background-color: white;
     text-align: center;
@@ -24,7 +23,7 @@ body {
     min-height: 100vh;
 }
 
-article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section, main {
     display: block;
 }
 
@@ -32,17 +31,14 @@ a {
     background-color: transparent;
     color: #222;
     text-decoration: none;
-    transition: var(--transition-standard);
+    transition: var(--transition-fast);
 }
 
 a:hover { color: #555; }
-a:visited { color: #777; }
 
 /*====================================*/
-/* 2. LAYOUT & UTILITIES              */
+/* 2. LEGACY CENTERING & OVERLAY      */
 /*====================================*/
-
-/* Keeping your exact absolute centering logic so JS doesn't break */
 .centered {
     position: absolute;
     top: 50%;
@@ -54,7 +50,6 @@ a:visited { color: #777; }
 }
 
 .hidden { display: none !important; opacity: 0; }
-.visible { display: block; opacity: 1; }
 
 .animate {
     position: absolute !important;
@@ -68,65 +63,16 @@ a:visited { color: #777; }
 #nimaiOverlay {
     z-index: 5000;
     position: fixed;
-    inset: 0; /* Modern shortcut for top/left/bottom/right: 0 */
+    inset: 0;
     background-color: white;
     opacity: 0.98;
 }
 
 /*====================================*/
-/* 3. BACKGROUNDS & SLIDESHOW         */
+/* 3. BRANDING & TEXT                 */
 /*====================================*/
-#sasaBgImage {
-    min-height: 100%;
+#nimaiHeader {
     width: 100%;
-    height: auto;
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: -1;
-    opacity: 1;
-}
-
-#slideshow {
-    height: 100vh;
-    position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    overflow: hidden;
-    z-index: -1;
-}
-
-.bg-image {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    background-size: cover;
-    background-position: 50% 50%;
-    z-index: -1;
-    transform: scale(1.1);
-    transition: transform 1s ease, opacity 1s ease;
-}
-
-.bg-active {
-    transform: scale(1);
-    opacity: 0.5;
-}
-
-/*====================================*/
-/* 4. MAIN STAGE & BRANDING           */
-/*====================================*/
-#mainStage {
-    background-color: var(--white-alpha);
-    border-radius: 10px;
-    width: 100%;
-    margin: 5px auto;
-    overflow: hidden;
-}
-
-.mainContainer {
-    width: 90%;
-    margin: 10px auto;
 }
 
 .sasaLogo, .sasaLogoIntro {
@@ -140,34 +86,27 @@ a:visited { color: #777; }
 
 #sasaMessage, #sasaMsg {
     color: var(--accent-blue);
-    font-size: clamp(2rem, 6vmin, 4rem); /* Responsive font scaling */
+    font-size: clamp(2rem, 6vmin, 4rem);
     padding: 5px;
     white-space: nowrap;
 }
 
-#AllGlories {
-    font-size: clamp(0.75rem, 2.2vmin, 1.1rem) !important;
+#AllGlories h5 {
+    font-size: clamp(0.75rem, 2.2vmin, 1.1rem);
     padding: 5px;
 }
 
-#heartcoreLogo {
-    height: 88px;
-    width: 160px;
-    padding: 5px;
-    background: url(../images/HeartcoreMusic.svg) no-repeat center center;
-    background-size: contain;
-    margin: 10px auto;
+/*====================================*/
+/* 4. CONTENT & SOCIALS               */
+/*====================================*/
+#contentWrapper {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
-.nimaiFooterCredit {
-    font-size: clamp(0.7rem, 2.2vmin, 1rem);
-    padding-bottom: 5px;
-}
-
-/*====================================*/
-/* 5. SOCIAL MENU                     */
-/*====================================*/
-.socialLogos {
+#socialLogos {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -184,77 +123,74 @@ a:visited { color: #777; }
     border: 3px solid var(--gray-light);
     justify-content: center;
     align-items: center;
-    transition: var(--transition-standard);
+    transition: var(--transition-fast);
 }
 
 .link i {
     color: var(--gray-light);
     font-size: 18px !important;
-    font-family: "Font Awesome 6 Free", "Font Awesome 5 Free", "FontAwesome" !important;
-    font-weight: 900;
 }
 
-.link:hover {
-    background-color: var(--gray-light);
-}
-
+.link:hover { background-color: var(--gray-light); }
 .link:hover i { color: #000; }
 
-/* Specific "Pay" link styling from your original */
-.link.pay i {
-    -webkit-text-stroke: 1px var(--gray-light);
+/*====================================*/
+/* 5. FOOTER & BACKGROUND             */
+/*====================================*/
+#nimaiFooter {
+    width: 100%;
+    margin-top: 10px;
 }
 
-.link.pay:hover i {
-    -webkit-text-stroke: 1px #000;
+#heartcoreLogo {
+    height: 88px;
+    width: 160px;
+    background: url(../images/HeartcoreMusic.svg) no-repeat center center;
+    background-size: contain;
+    margin: 10px auto;
 }
 
-/* Tooltips */
-.tooltip { position: relative; }
+#slideshow {
+    height: 100vh;
+    position: fixed;
+    inset: 0;
+    overflow: hidden;
+    z-index: -1;
+}
 
-.tooltip .tooltiptext {
-    visibility: hidden;
-    width: 80px;
-    background-color: #333;
-    color: #fff;
-    text-align: center;
-    border-radius: 4px;
-    padding: 5px;
+.bg-image {
     position: absolute;
-    bottom: 125%;
-    left: 50%;
-    transform: translateX(-50%);
-    opacity: 0;
-    transition: opacity 0.3s ease;
-    font-size: 12px;
-}
-
-.tooltip:hover .tooltiptext {
-    visibility: visible;
-    opacity: 1;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: 50% 50%;
+    transform: scale(1.1);
 }
 
 /*====================================*/
 /* 6. MEDIA PLAYERS                   */
 /*====================================*/
+#mainStage {
+    background-color: var(--white-alpha);
+    border-radius: 10px;
+    width: 100%;
+    margin: 5px auto;
+    overflow: hidden;
+}
+
 .soundcloudPlayer {
     padding: 5px;
     opacity: 0.90;
-    transition: opacity 0.3s ease;
 }
 
 .soundcloudPlayer iframe {
-    padding: 5px;
     border-radius: 12px;
 }
 
-.soundcloudPlayer:hover { opacity: 1.0; }
-
 /*====================================*/
-/* 7. RESPONSIVE QUERIES              */
+/* 7. RESPONSIVE                      */
 /*====================================*/
 @media screen and (max-width: 600px) {
-    .socialLogos { max-width: 240px; }
+    #socialLogos { max-width: 240px; }
     #sasaMessage, #sasaMsg { font-size: 8vmin; }
-    #AllGlories, .nimaiFooterCredit { font-size: 2.7vmin; }
 }
