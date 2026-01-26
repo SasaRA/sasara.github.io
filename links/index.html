@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sasara | Hub</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <style>
+        :root {
+            --bg-color: #ffffff;
+            --card-bg: #f8f9fa;
+            --text-main: #1d1d1f;
+            --text-dim: #86868b;
+            --border-color: #d2d2d7;
+
+            /* Brand Color Palette */
+            --c-spotify: #1DB954; --c-apple: #fc3c44; --c-yt: #FF0000;
+            --c-sc: #ff5500; --c-bc: #1da1f2; --c-amz: #ff9900;
+            --c-ig: #E1306C; --c-fb: #1877F2; --c-gh: #6e5494;
+            --c-li: #0077b5; --c-ptrn: #f96854; --c-tk: #000000;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: 60px 15px;
+            text-align: center;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .container { max-width: 1000px; margin: 0 auto; }
+
+        /* Brand Header & Footer Styles */
+        .header-text {
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 2px;
+            color: var(--text-dim);
+            margin-bottom: 2rem;
+            text-transform: uppercase;
+        }
+        .logo-header { width: 200px; margin-bottom: 3.5rem; }
+        .logo-footer { width: 160px; margin-top: 5rem; display: block; margin-left: auto; margin-right: auto; }
+        .footer-text {
+            display: block;
+            margin-top: 1.5rem;
+            font-size: 0.8rem;
+            color: var(--text-dim);
+            text-decoration: none;
+            letter-spacing: 0.5px;
+        }
+        .footer-text:hover { color: var(--text-main); text-decoration: underline; }
+
+        h2 {
+            font-size: 0.85rem;
+            color: var(--text-dim);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin: 4rem 0 1.5rem 0;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            text-align: left;
+        }
+        h2::after { content: ""; height: 1px; background: var(--border-color); flex-grow: 1; }
+
+        .links-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 15px;
+            text-align: left;
+        }
+
+        .link-card {
+            background: var(--card-bg);
+            padding: 16px 20px;
+            border-radius: 12px;
+            text-decoration: none;
+            color: var(--text-main);
+            display: flex;
+            align-items: center;
+            transition: transform 0.2s ease-in-out, background 0.2s, border-color 0.2s;
+            border: 1px solid var(--border-color);
+            font-weight: 500;
+            transform-origin: center; /* Ensures scaling from middle */
+        }
+
+        .link-card i {
+            margin-right: 15px;
+            font-size: 1.3rem;
+            width: 24px;
+            text-align: center;
+        }
+
+        /* Scale animation on hover */
+        .link-card:hover {
+            transform: scale(1.04); /* Gets slightly bigger from center */
+            background: #ffffff;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+            z-index: 10;
+        }
+
+        /* Brand Hover Colors */
+        .spotify:hover { color: var(--c-spotify); border-color: var(--c-spotify); }
+        .apple:hover { color: var(--c-apple); border-color: var(--c-apple); }
+        .yt:hover { color: var(--c-yt); border-color: var(--c-yt); }
+        .sc:hover { color: var(--c-sc); border-color: var(--c-sc); }
+        .bc:hover { color: var(--c-bc); border-color: var(--c-bc); }
+        .amz:hover { color: var(--c-amz); border-color: var(--c-amz); }
+        .ig:hover { color: var(--c-ig); border-color: var(--c-ig); }
+        .fb:hover { color: var(--c-fb); border-color: var(--c-fb); }
+        .gh:hover { color: var(--c-gh); border-color: var(--c-gh); }
+        .li:hover { color: var(--c-li); border-color: var(--c-li); }
+        .ptrn:hover { color: var(--c-ptrn); border-color: var(--c-ptrn); }
+        .tk:hover { color: var(--c-tk); border-color: #333; }
+
+        @media (max-width: 500px) {
+            .links-grid { grid-template-columns: 1fr; }
+            body { padding: 40px 15px; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <p class="header-text">ALL GLORIES TO THE SUPREME LOVERS AND THEIR DIVINE SERVITORS</p>
+    <img src="https://sasara.github.io/images/SasaRA_Logo.svg" alt="Sasa RA Logo" class="logo-header">
+
+    <h2><i class="fas fa-music" style="font-size: 0.8rem; margin-right: 5px;"></i> Music & Streaming</h2>
+    <div class="links-grid">
+        <a href="https://music.sasara.me" class="link-card"><i class="fas fa-headphones"></i> Music Hub</a>
+        <a href="https://spotify.sasara.me" class="link-card spotify"><i class="fab fa-spotify"></i> Spotify</a>
+        <a href="https://apple.sasara.me" class="link-card apple"><i class="fab fa-apple"></i> Apple Music</a>
+        <a href="https://amazon.sasara.me" class="link-card amz"><i class="fab fa-amazon"></i> Amazon Music</a>
+        <a href="https://youtubemusic.sasara.me" class="link-card yt"><i class="fab fa-youtube"></i> YT Music</a>
+        <a href="https://soundcloud.sasara.me" class="link-card sc"><i class="fab fa-soundcloud"></i> SoundCloud</a>
+        <a href="https://bandcamp.sasara.me" class="link-card bc"><i class="fab fa-bandcamp"></i> Bandcamp</a>
+        <a href="https://pandora.sasara.me" class="link-card"><i class="fas fa-compact-disc"></i> Pandora</a>
+        <a href="https://deezer.sasara.me" class="link-card"><i class="fab fa-deezer"></i> Deezer</a>
+        <a href="https://iheart.sasara.me" class="link-card"><i class="fas fa-radio"></i> iHeartRadio</a>
+        <a href="https://reverbnation.sasara.me" class="link-card"><i class="fas fa-star"></i> ReverbNation</a>
+        <a href="https://freesound.sasara.me" class="link-card"><i class="fas fa-wave-square"></i> Freesound</a>
+        <a href="https://soundbetter.sasara.me" class="link-card"><i class="fas fa-sliders"></i> SoundBetter</a>
+        <a href="https://broadjam.sasara.me" class="link-card"><i class="fas fa-bolt"></i> Broadjam</a>
+    </div>
+
+    <h2><i class="fas fa-hashtag" style="font-size: 0.8rem; margin-right: 5px;"></i> Social & Video</h2>
+    <div class="links-grid">
+        <a href="https://x.sasara.me" class="link-card"><i class="fab fa-x-twitter"></i> X / Twitter</a>
+        <a href="https://instagram.sasara.me" class="link-card ig"><i class="fab fa-instagram"></i> Instagram</a>
+        <a href="https://tiktok.sasara.me" class="link-card tk"><i class="fab fa-tiktok"></i> TikTok</a>
+        <a href="https://youtube.sasara.me" class="link-card yt"><i class="fab fa-youtube"></i> YouTube</a>
+        <a href="https://rumble.sasara.me" class="link-card"><i class="fas fa-play-circle"></i> Rumble</a>
+        <a href="https://facebook.sasara.me" class="link-card fb"><i class="fab fa-facebook"></i> Facebook</a>
+        <a href="https://locals.sasara.me" class="link-card"><i class="fas fa-comment-dots"></i> Locals</a>
+        <a href="https://truthsocial.sasara.me" class="link-card"><i class="fas fa-flag-usa"></i> Truth Social</a>
+        <a href="https://clouthub.sasara.me" class="link-card"><i class="fas fa-users"></i> CloutHub</a>
+        <a href="https://tumblr.sasara.me" class="link-card"><i class="fab fa-tumblr"></i> Tumblr</a>
+        <a href="https://flickr.sasara.me" class="link-card"><i class="fab fa-flickr"></i> Flickr</a>
+    </div>
+
+    <h2><i class="fas fa-code" style="font-size: 0.8rem; margin-right: 5px;"></i> Engineering</h2>
+    <div class="links-grid">
+        <a href="https://github.sasara.me" class="link-card gh"><i class="fab fa-github"></i> GitHub</a>
+        <a href="https://stackoverflow.sasara.me" class="link-card"><i class="fab fa-stack-overflow"></i> Stack Overflow</a>
+        <a href="https://stackexchange.sasara.me" class="link-card"><i class="fab fa-stack-exchange"></i> Stack Exchange</a>
+        <a href="https://codepen.sasara.me" class="link-card"><i class="fab fa-codepen"></i> CodePen</a>
+        <a href="https://linkedin.sasara.me" class="link-card li"><i class="fab fa-linkedin"></i> LinkedIn</a>
+        <a href="https://medium.sasara.me" class="link-card"><i class="fab fa-medium"></i> Medium</a>
+        <a href="https://about.sasara.me" class="link-card"><i class="fas fa-user-circle"></i> About Me</a>
+    </div>
+
+    <h2><i class="fas fa-link" style="font-size: 0.8rem; margin-right: 5px;"></i> Support & Hubs</h2>
+    <div class="links-grid">
+        <a href="https://patreon.sasara.me" class="link-card ptrn"><i class="fab fa-patreon"></i> Patreon</a>
+        <a href="https://subscribestar.sasara.me" class="link-card"><i class="fas fa-star"></i> SubscribeStar</a>
+        <a href="https://linktree.sasara.me" class="link-card"><i class="fas fa-tree"></i> Linktree Hub</a>
+    </div>
+
+    <img src="https://sasara.github.io/images/HeartcoreMusic.svg" alt="Heartcore Music Logo" class="logo-footer">
+    <a class="footer-text" href="http://www.nimaigroup.com/" target="_blank">Another NIMAI GROUP WebArt Masterpiece℠</a>
+</div>
+
+</body>
+</html>
