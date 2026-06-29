@@ -14,7 +14,7 @@ var $sc_NightPlaylist = '<iframe id="scPlaylist" width="90%" height="300px" scro
 
 var $sc_Contract = '<iframe id="scPlaylist" width="90%" height="100px" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/572970957&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"></iframe>';
 
-var $sc_focus = '<iframe style="border: 0; width: 70%; height: 120px;" src="https://bandcamp.com/EmbeddedPlayer/track=960090985/size=large/bgcol=ffffff/linkcol=0687f5/tracklist=false/artwork=small/transparent=true/" seamless><a href="https://sasara.bandcamp.com/track/flyin">Luv Rap by Sasa Hasid RA</a></iframe>';
+var $sc_focus = '<iframe style="border: 0; width: 70%; height: 120px;" src="https://bandcamp.com/EmbeddedPlayer/track=960090985/size=large/bgcol=ffffff/linkcol=0687f5/tracklist=false/artwork=small/transparent=true/" seamless><a href="https://sasara.bandcamp.com/track/flyin">FLYiN by Sasa Hasid RA</a></iframe>';
 //var $sc_focus = '<iframe id="scPlaylist" width="90%" height="100px" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/1238406343&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"></iframe>';
 
 var $sasaMessageList = [];
