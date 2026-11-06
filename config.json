@@ -51,8 +51,8 @@
   "social": [
     { "id": "bandcamp", "icon": "fa-brands fa-bandcamp" },
     { "id": "spotify", "icon": "fa-brands fa-spotify" },
-    { "id": "apple", "icon": "fa-brands fa-apple" },
-    { "id": "soundcloud", "icon": "fa-brands fa-soundcloud" },
+    { "id": "amazon music", "icon": "fa-brands fa-amazon" },
+    { "id": "apple music", "icon": "fa-brands fa-apple" },
     { "id": "instagram", "icon": "fa-brands fa-instagram" },
     { "id": "youtube", "icon": "fa-brands fa-youtube" },
     { "id": "x", "icon": "fa-brands fa-x-twitter" },
@@ -60,7 +60,7 @@
     { "id": "pay", "icon": "fa-solid fa-dollar-sign" }
   ],
   "social_OFF": [
-    { "id": "amazon", "icon": "fa-brands fa-amazon" },
+    { "id": "soundcloud", "icon": "fa-brands fa-soundcloud" },
     { "id": "linkedin", "icon": "fa-brands fa-linkedin-in" },
     { "id": "codepen", "icon": "fa-brands fa-codepen" },
     { "id": "github", "icon": "fa-brands fa-github" },
